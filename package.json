@@ -4,7 +4,9 @@
       "description": "",
       "main": "build/index.js",
       "scripts": {
-            "build": "node build/index.js",
+            "build": "node build/index.js"
+      },
+      "gitHooks": {
             "precommit": "npm run build && git commit -m 'build' && git push"
       },
       "repository": {
