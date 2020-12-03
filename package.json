@@ -7,7 +7,7 @@
             "build": "node build/index.js"
       },
       "gitHooks": {
-            "precommit": "npm run build && git commit -m 'build' && git push"
+            "pre-commit": "npm run build && git commit -m 'build' && git push"
       },
       "repository": {
             "type": "git",
