@@ -3,6 +3,9 @@
 
       <head>
             <title>MatirxAge images bed</title>
+            <script>
+                  window.img_paths=["logo_light_design.png","logo_light_design_black.png","logo_wave.png","logo_wave_black.png"]
+            </script>
       </head>
 
       <body>
@@ -22,7 +25,7 @@
             </div>
       </body>
 
-      <script src='../vue.min.js'></script>
+      <script src='./vue.min.js'></script>
 
       <script>
             console.log(window)
@@ -36,7 +39,7 @@
                         getStyles: function (path) {
                               var str = ''
 
-                              str += ';background-image:url(../' + path + ')'
+                              str += ';background-image:url(./' + path + ')'
                               str += ';background-size:108% 108%'
                               str += ';background-position:center center'
 
@@ -61,17 +64,28 @@
             }
 
             .img_items .img_item_wrap {
-                  width: calc(100vw / 5);
-                  height: calc(100vw / 5);
+                  width: calc(100vw / 9);
+                  height: calc(100vw / 9);
+                  box-sizing: border-box;
+                  transition: all ease 0.3s;
             }
 
             .img_items .img_item_wrap .img_item {
                   width: 100%;
                   height: 100%;
+                  box-sizing: border-box;
                   display: flex;
                   justify-content: center;
                   align-items: center;
                   overflow: hidden;
+                  cursor: pointer;
+            }
+
+            .img_items .img_item_wrap:hover {
+                  box-shadow: 0 0 30px #eee;
+                  position: relative;
+                  z-index: 100;
+                  background: linear-gradient(whitesmoke, #eee);
             }
       </style>
 

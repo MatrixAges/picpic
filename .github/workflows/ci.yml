@@ -12,7 +12,6 @@ jobs:
 
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
-      run: npm install && node build/index.js
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./
