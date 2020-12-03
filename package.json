@@ -6,9 +6,6 @@
       "scripts": {
             "build": "node build/index.js"
       },
-      "gitHooks": {
-            "pre-commit": "npm run build"
-      },
       "repository": {
             "type": "git",
             "url": "git+https://github.com/MatrixAge/images.git"
@@ -20,7 +17,6 @@
       },
       "homepage": "https://github.com/MatrixAge/images#readme",
       "devDependencies": {
-            "globby": "^11.0.1",
-            "yorkie": "^2.0.0"
+            "globby": "^11.0.1"
       }
 }
