@@ -17,9 +17,11 @@ const main = async () => {
             </script>
       </head>
 `
-	)
+      )
       
-      fs.writeFileSync('index.html', html)
+      if (!fs.existsSync('dist')) fs.mkdirSync('dist')
+      
+      fs.writeFileSync('dist/index.html', html)
 }
 
 main()

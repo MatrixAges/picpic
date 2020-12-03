@@ -12,25 +12,71 @@
                               class="img_item_wrap flex flex_column"
                               v-for="(item,index) in img_paths"
                               :key="index"
+                              @click="onImgItem"
                         >
-                              <div
+                              <button
                                     class="img_item"
                                     :style="item | getStyles"
-                              ></div>
-                              <div class="options w_100 border_box">
-                                    <span class="url">https://matrixage.github.io/images/{{item}}</span>
+                                    data-type="img"
+                                    :data-index="index"
+                              ></button>
+                              <span
+                                    class="options w_100 border_box flex justify_center align_center"
+                                    data-type="url"
+                                    :data-index="index"
+                              >{{item}}</span>
+                        </div>
+                  </div>
+                  <div
+                        :class="'detail_wrap fixed ' + style"
+                        v-if="current!==-1"
+                        @click="onImgItem"
+                  >
+                        <div
+                              class="img_item"
+                              :style="img_paths[current] | getStyles"
+                        >
+                              <button class="btn_close border_box flex justify_center align_center absolute">
+                                    <svg
+                                          xmlns='http://www.w3.org/2000/svg'
+                                          viewBox='0 0 512 512'
+                                    >
+                                          <path
+                                                fill='none'
+                                                stroke='currentColor'
+                                                stroke-linecap='round'
+                                                stroke-linejoin='round'
+                                                stroke-width='32'
+                                                d='M368 368L144 144M368 144L144 368'
+                                          />
+                                    </svg>
+                              </button>
+                              <div
+                                    class="detail_options border_box flex justify_center align_center absolute"
+                                    @click.stop="onChooseStyle"
+                              >
+                                    <button
+                                          :class="style==='contain'?'active':''"
+                                          data-style="contain"
+                                    >contain</button>
+                                    <button
+                                          :class="style==='cover'?'active':''"
+                                          data-style="cover"
+                                    >cover</button>
                               </div>
                         </div>
                   </div>
             </div>
       </body>
 
-      <script src='./vue.min.js'></script>
-      <script src='./index.js'> </script>
+      <script src='../vue.min.js'></script>
+      <script src='../clipboard.js'></script>
+      <script src='../index.js'> </script>
 
       <style>
-            @import './atom.min.css';
-            @import './index.css';
+            @import '../atom.min.css';
+            @import '../index.css';
+            @import '../mobile.css';
       </style>
 
 </html>
