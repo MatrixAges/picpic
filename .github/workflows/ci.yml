@@ -14,8 +14,8 @@ jobs:
     - uses: actions/setup-node@v2-beta
       with:
         node-version: '15'
-    - run: npm install
-    - run: node build/index.js
+      run: npm install
+      run: node build/index.js
 
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
