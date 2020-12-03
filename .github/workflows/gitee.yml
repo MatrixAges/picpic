@@ -1,0 +1,23 @@
+name: Sync
+
+on: page_build
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Sync to Gitee
+        uses: wearerequired/git-mirror-action@master
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.GITEE_RSA_PRIVATE_KEY }}
+        with:
+          source-repo: git@github.com:MatrixAge/images.git
+          destination-repo: git@gitee.com:isVertical/images.git
+
+      - name: Build Gitee Pages
+        uses: yanglbme/gitee-pages-action@main
+        with:
+          gitee-username: isVertical
+          gitee-password: ${{ secrets.GITEE_PASSWORD }}
+          gitee-repo: isVertical/images
+          branch: master
