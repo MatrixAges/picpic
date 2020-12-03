@@ -4,7 +4,13 @@
       "description": "",
       "main": "build/index.js",
       "scripts": {
+            "build": "node build/index.js",
             "test": "echo \"Error: no test specified\" && exit 1"
+      },
+      "husky": {
+            "hooks": {
+                  "pre-commit": "npm run build"
+            }
       },
       "repository": {
             "type": "git",
@@ -17,6 +23,7 @@
       },
       "homepage": "https://github.com/MatrixAge/images#readme",
       "devDependencies": {
-            "globby": "^11.0.1"
+            "globby": "^11.0.1",
+            "husky": "^4.3.0"
       }
 }
