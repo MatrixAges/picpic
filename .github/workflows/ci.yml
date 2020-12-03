@@ -11,10 +11,7 @@ jobs:
       uses: actions/checkout@master
 
     - name: Build
-      uses: actions/setup-node@v2-beta
-
-    - run: npm install
-    - run: node build/index.js
+      run: npm install && node build/index.js
 
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
