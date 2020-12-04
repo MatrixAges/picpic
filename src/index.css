@@ -13,48 +13,60 @@ button {
       outline: none;
       border: none;
       background-color: transparent;
+      transition: all ease 0.3s;
+}
+
+button:active{
+      transform: scale(0.92);
+}
+
+.disabled{
+      opacity: 0.3;
+}
+
+:root {
+      --size_img: 16vw;
+      --size_detail: 50vw;
+}
+
+.landing_wrap {
+      opacity: 1;
+}
+
+#app {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
 }
 
 .img_items {
-      width: 100%;
-      box-sizing: border-box;
-      display: flex;
-      flex-wrap: wrap;
+      width: 80vw;
+      padding: 10vh 0;
+      padding-bottom: 16vh;
 }
 
 .img_items .img_item_wrap {
-      width: calc(100vw / 8);
+      width: var(--size_img);
+      height: auto;
       box-sizing: border-box;
       overflow: hidden;
       transition: all ease 0.3s;
+      background: linear-gradient(-30deg, black, whitesmoke);
 }
 
 .img_item {
       width: 100%;
-      height: calc(100vw / 8);
+      height: var(--size_img);
       box-sizing: border-box;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       overflow: hidden;
       cursor: pointer;
       transition: all ease 0.3s;
 }
 
-.img_items .img_item_wrap:hover {
-      padding: 9px;
-      color: white;
-      background: linear-gradient(30deg, purple, orange);
-      border-radius: 6px;
-}
-
-.img_items .img_item_wrap:hover .img_item {
-      height: calc(100vw / 8 - 12px);
-      border-radius: 6px;
-}
-
 .img_items .img_item_wrap:hover .options {
-      margin-top: 6px;
+      transform: translateY(0);
 }
 
 .img_items .img_item_wrap .options {
@@ -64,41 +76,36 @@ button {
       font-size: 10px;
       overflow: hidden;
       cursor: pointer;
-      background-color: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-radius: 6px;
+      background-color: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+      color: white;
+      transition: all ease 0.3s;
+      transform: translateY(100%);
 }
 
 .detail_wrap {
-      bottom: 24px;
-      right: 24px;
-      z-index: 100;
-      width: calc(100vw / 4);
+      background-color: rgba(0, 0, 0, 0.72);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+}
+
+.detail_wrap .detail {
+      width: var(--size_detail);
       background: linear-gradient(-30deg, purple, orange);
-      box-shadow: 0 0 30px #ddd;
-      border-radius: 12px;
+      border-radius: 6px;
       overflow: hidden;
 }
 
-.detail_wrap .img_item {
-      height: calc(100vw / 4);
+.detail_wrap .detail .img_item {
+      height: var(--size_detail);
 }
 
-.detail_wrap.contain {
-      bottom: 0;
-      right: 0;
-      width: 100vw;
-      height: 100vh;
-      border-radius: 0;
-}
-
-.detail_wrap.contain .img_item {
+.detail_wrap .detail.contain .img_item {
       background-size: contain !important;
-      height: 100%;
 }
 
-.detail_wrap.cover .img_item {
+.detail_wrap .detail.cover .img_item {
       background-size: cover !important;
 }
 
@@ -125,7 +132,6 @@ button {
 
 .detail_options {
       bottom: 18px;
-      left: 18px;
       border-radius: 100px;
       background-color: rgba(255, 255, 255, 0.8);
       backdrop-filter: blur(10px);
@@ -139,12 +145,10 @@ button {
       box-shadow: 0 0 30px #ccc;
 }
 
-
 .detail_options button {
       width: 54px;
       padding: 5px 0;
       font-size: 12px;
-      color: #888;
       cursor: pointer;
 }
 
@@ -152,4 +156,132 @@ button {
       background-color: black;
       color: white;
       border-radius: 100px;
+}
+
+.detail_options.style {
+      left: 18px;
+}
+
+.detail_options.current {
+      right: 18px;
+}
+
+.detail_options.current button:active {
+      background-color: black;
+      color: white;
+}
+
+.detail_options.current button:first-child {
+      border-right: 1px solid #eee;
+}
+
+.pagination_wrap {
+      bottom: 0;
+}
+
+.pagination_wrap .pagination {
+      padding: 18px 24px;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+      background-color: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      color: black;
+}
+
+.pagination_wrap .pagination .btn_option {
+      padding: 9px 18px;
+      border-radius: 4px;
+      transition: all ease 0.3s;
+      cursor: pointer;
+      background-color: black;
+      color: white;
+      border: 1px solid transparent;
+}
+
+.pagination_wrap .pagination .btn_option:hover {
+      background-color: transparent;
+      color: black;
+      border: 1px solid black;
+}
+
+.pagination_wrap .pagination .tabbar_items {
+      margin: 0 12px;
+}
+
+.pagination_wrap .pagination .tabbar_items .tabbar_item {
+      width: 36px;
+      height: 36px;
+      margin: 0 4px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid whitesmoke;
+      transition: all ease 0.3s;
+      cursor: pointer;
+      font-size: 15px;
+}
+
+.pagination_wrap .pagination .tabbar_items .tabbar_item.active{
+      border: 1px solid black;
+}
+
+.pagination_wrap .pagination .tabbar_items .tabbar_item:hover {
+      border: 1px solid black;
+}
+
+.search_wrap {
+      padding-top: 10vh;
+}
+
+.search_wrap .search {
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      color: black;
+}
+
+.search_wrap .search .input {
+      width: 42vw;
+      height: 64px;
+      padding: 0 24px;
+      text-align: center;
+      box-sizing: border-box;
+      border: 1px solid whitesmoke;
+      background-color: white;
+      border-radius: 48px;
+      outline: none;
+      transition: all ease 0.3s;
+      font-size: 20px;
+      line-height: 64px;
+      color: black;
+}
+
+#select_page_size{
+      padding: 7px 9px;
+      margin-right: 24px;
+      box-sizing: border-box;
+      border-radius: 4px;
+      transition: all ease 0.3s;
+      cursor: pointer;
+      background-color: transparent;
+      color: black;
+      border: 1px solid whitesmoke;
+      outline: none;
+}
+
+#input_page{
+      width: 89px;
+      padding: 9px 9px;
+      margin-left: 24px;
+      box-sizing: border-box;
+      border-radius: 4px;
+      transition: all ease 0.3s;
+      cursor: pointer;
+      background-color: transparent;
+      color: black;
+      border: 1px solid whitesmoke;
+      outline: none;
 }

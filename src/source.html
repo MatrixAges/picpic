@@ -1,17 +1,40 @@
 <!DOCTYPE HTML>
 <html>
-      <script src='./vue.min.js'></script>
 
       <head>
             <title>MatirxAge images bed</title>
       </head>
 
+      <style>
+            @import './atom.min.css';
+            @import './index.css';
+            @import './mobile.css';
+      </style>
+
       <body>
-            <div id="app">
-                  <div class="img_items">
+            <div
+                  id="landing_wrap"
+                  class="landing_wrap w_100vw h_100vh border_box flex justify_center align_center fixed top_0 left_0 z_index_1000 bg_white transition_normal"
+            >
+                  <div class="landing fontsize_64">Loading</div>
+            </div>
+            <div
+                  id="app"
+                  style="opacity: 0;"
+            >
+                  <div class="search_wrap w_100 border_box flex justify_center">
+                        <div class="search flex justify_center align_center">
+                              <input
+                                    class="input"
+                                    type="text"
+                                    placeholder="Search"
+                              >
+                        </div>
+                  </div>
+                  <div class="img_items border_box flex flex_wrap align_start">
                         <div
-                              class="img_item_wrap flex flex_column"
-                              v-for="(item,index) in img_paths"
+                              class="img_item_wrap flex flex_column relative"
+                              v-for="(item,index) in current_data"
                               :key="index"
                               @click="onImgItem"
                         >
@@ -20,63 +43,162 @@
                                     :style="item | getStyles"
                                     data-type="img"
                                     :data-index="index"
-                              ></button>
+                              >
+                              </button>
                               <span
-                                    class="options w_100 border_box flex justify_center align_center"
+                                    class="options w_100 border_box flex justify_center align_center absolute bottom_0"
                                     data-type="url"
                                     :data-index="index"
                               >{{item}}</span>
                         </div>
                   </div>
                   <div
-                        :class="'detail_wrap fixed ' + style"
+                        class="detail_wrap flex justify_center align_center fixed w_100vw h_100vh top_0 left_0 z_index_1000"
                         v-if="current!==-1"
                         @click="onImgItem"
                   >
-                        <div
-                              class="img_item"
-                              :style="img_paths[current] | getStyles"
-                        >
-                              <button class="btn_close border_box flex justify_center align_center absolute">
-                                    <svg
-                                          xmlns='http://www.w3.org/2000/svg'
-                                          viewBox='0 0 512 512'
-                                    >
-                                          <path
-                                                fill='none'
-                                                stroke='currentColor'
-                                                stroke-linecap='round'
-                                                stroke-linejoin='round'
-                                                stroke-width='32'
-                                                d='M368 368L144 144M368 144L144 368'
-                                          />
-                                    </svg>
-                              </button>
+                        <div :class="'detail relative ' + style">
                               <div
-                                    class="detail_options border_box flex justify_center align_center absolute"
-                                    @click.stop="onChooseStyle"
+                                    class="img_item"
+                                    :style="current_data[current] | getStyles"
+                              >
+                                    <button class="btn_close border_box flex justify_center align_center absolute">
+                                          <svg
+                                                xmlns='http://www.w3.org/2000/svg'
+                                                viewBox='0 0 512 512'
+                                          >
+                                                <path
+                                                      fill='none'
+                                                      stroke='currentColor'
+                                                      stroke-linecap='round'
+                                                      stroke-linejoin='round'
+                                                      stroke-width='32'
+                                                      d='M368 368L144 144M368 144L144 368'
+                                                />
+                                          </svg>
+                                    </button>
+                                    <div
+                                          class="detail_options style border_box flex justify_center align_center absolute"
+                                          @click.stop="onChooseStyle"
+                                    >
+                                          <button
+                                                :class="style==='contain'?'active':''"
+                                                data-style="contain"
+                                          >contain</button>
+                                          <button
+                                                :class="style==='cover'?'active':''"
+                                                data-style="cover"
+                                          >cover</button>
+                                    </div>
+                                    <div
+                                          class="detail_options current border_box flex justify_center align_center absolute"
+                                          @click.stop="onChangeCurrent"
+                                    >
+                                          <button
+                                                :class="Number(current)<=0?'disabled':''"
+                                                data-type="prev"
+                                          >prev</button>
+                                          <button
+                                                :class="Number(current)+1>=current_data.length?'disabled':''"
+                                                data-type="next"
+                                          >next</button>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+                  <div class="pagination_wrap w_100 border_box flex justify_center fixed z_index_100">
+                        <div class="pagination flex justify_center align_center">
+                              <select
+                                    id="select_page_size"
+                                    name="page_size"
+                                    v-model="page_size"
+                              >
+                                    <option
+                                          v-for="(item,index) in array_page_size"
+                                          :key="index"
+                                          :value="item"
+                                    >{{item}} /page</option>
+                              </select>
+                              <button class="btn_option prev">prev</button>
+                              <div
+                                    class="tabbar_items flex align_center"
+                                    @click="onPageItem"
                               >
                                     <button
-                                          :class="style==='contain'?'active':''"
-                                          data-style="contain"
-                                    >contain</button>
+                                          class="tabbar_item"
+                                          :data-page="Number(page)-4"
+                                          v-if="Number(page)-4>0"
+                                    >{{Number(page)-4}}</button>
                                     <button
-                                          :class="style==='cover'?'active':''"
-                                          data-style="cover"
-                                    >cover</button>
+                                          class="tabbar_item"
+                                          :data-page="Number(page)-3"
+                                          v-if="Number(page)-3>0"
+                                    >{{Number(page)-3}}</button>
+                                    <button
+                                          class="tabbar_item"
+                                          :data-page="Number(page)-2"
+                                          v-if="Number(page)-2>0"
+                                    >{{Number(page)-2}}</button>
+                                    <button
+                                          class="tabbar_item"
+                                          :data-page="Number(page)-1"
+                                          v-if="Number(page)-1>0"
+                                    >{{Number(page)-1}}</button>
+                                    <button
+                                          class="tabbar_item active"
+                                          :data-page="Number(page)"
+                                    >{{Number(page)}}</button>
+                                    <button
+                                          class="tabbar_item"
+                                          :data-page="Number(page)+1"
+                                    >{{Number(page)+1}}</button>
+                                    <button
+                                          class="tabbar_item"
+                                          :data-page="Number(page)+2"
+                                    >{{Number(page)+2}}</button>
+                                    <button
+                                          class="tabbar_item"
+                                          :data-page="Number(page)+3"
+                                    >{{Number(page)+3}}</button>
+                                    <button
+                                          class="tabbar_item"
+                                          :data-page="Number(page)+4"
+                                    >{{Number(page)+4}}</button>
+                                    <button
+                                          class="tabbar_item"
+                                          :data-page="Number(page)+5"
+                                          v-if="page<5"
+                                    >{{Number(page)+5}}</button>
+                                    <button
+                                          class="tabbar_item"
+                                          :data-page="Number(page)+6"
+                                          v-if="page<4"
+                                    >{{Number(page)+6}}</button>
+                                    <button
+                                          class="tabbar_item"
+                                          :data-page="Number(page)+7"
+                                          v-if="page<3"
+                                    >{{Number(page)+7}}</button>
+                                    <button
+                                          class="tabbar_item"
+                                          :data-page="Number(page)"
+                                          v-if="page<2"
+                                    >{{Number(page)+8}}</button>
                               </div>
+                              <button class="btn_option next">next</button>
+                              <input
+                                    id="input_page"
+                                    type="number"
+                                    placeholder="jump to"
+                              >
                         </div>
                   </div>
             </div>
       </body>
 
+      <script src='./vue.min.js'></script>
+      <script src='./lodash.min.js'></script>
       <script src='./clipboard.js'></script>
       <script src='./index.js'> </script>
-
-      <style>
-            @import './atom.min.css';
-            @import './index.css';
-            @import './mobile.css';
-      </style>
 
 </html>
