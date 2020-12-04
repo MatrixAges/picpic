@@ -1,0 +1,22 @@
+{
+      "name": "images",
+      "version": "1.0.0",
+      "description": "",
+      "main": "build/index.js",
+      "scripts": {
+            "build": "node build/index.js"
+      },
+      "repository": {
+            "type": "git",
+            "url": "git+https://github.com/MatrixAge/images.git"
+      },
+      "author": "",
+      "license": "ISC",
+      "bugs": {
+            "url": "https://github.com/MatrixAge/images/issues"
+      },
+      "homepage": "https://github.com/MatrixAge/images#readme",
+      "devDependencies": {
+            "globby": "^11.0.1"
+      }
+}
