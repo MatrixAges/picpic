@@ -1,5 +1,3 @@
-console.log(window);
-
 new Vue({
 	el: '#app',
 	data: {
@@ -33,7 +31,9 @@ new Vue({
 					this.current = index
 					break
 				case 'url':
-					clipboardCopy('https://matrixage.github.io/images/'+this.img_paths[index])
+					clipboardCopy(
+						'https://matrixage.github.io/images/' + this.img_paths[index]
+					)
 					break
 				default:
 					break

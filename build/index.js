@@ -3,7 +3,7 @@ const globby = require('globby')
 
 const main = async () => {
 	const paths = await globby([ '*.png', '*.svg', '*.jpg', '*.jpeg' ])
-	const html = fs.readFileSync('source.html').toString().replace(
+	const html = fs.readFileSync('src/source.html').toString().replace(
 		`
       <head>
             <title>MatirxAge images bed</title>
