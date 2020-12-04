@@ -9,7 +9,7 @@ new Vue({
 		getStyles: function (path){
 			var str = ''
 
-			str += ';background-image:url(../' + path + ')'
+			str += ';background-image:url(./' + path + ')'
 			str += ';background-size:cover'
 			str += ';background-position:center center'
 			str += ';background-repeat:no-repeat'
