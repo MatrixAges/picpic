@@ -3,7 +3,12 @@ new Vue({
 	data: {
 		img_paths: window.img_paths,
 		current: -1,
-		style: 'cover'
+		style: 'contain',
+		page: 1,
+		page_size: 10,
+		array_page_size: [ 10, 20, 40, 80 ],
+		chunk_data: [],
+		current_data: []
 	},
 	filters: {
 		getStyles: function (path){
@@ -17,12 +22,42 @@ new Vue({
 			return str
 		}
 	},
+	watch: {
+		page: function (new_val){
+			this.current_data = this.chunk_data[new_val - 1]
+		},
+		page_size: function (new_val){
+			this.chunk_data = _.chunk(this.img_paths, new_val)
+			this.current_data = this.chunk_data[0]
+			this.page = 1
+		}
+	},
+	mounted: function (){
+		this.setLanding()
+		this.setChunkData()
+	},
 	methods: {
+		setLanding: function (){
+			setTimeout(() => {
+				const landing_wrap = document.querySelector('#landing_wrap')
+				const app = document.querySelector('#app')
+
+				landing_wrap.style.opacity = 0
+
+				setTimeout(() => (landing_wrap.style.display = 'none'), 300)
+
+				app.style.opacity = 1
+			}, 300)
+		},
+		setChunkData: function (){
+			this.chunk_data = _.chunk(this.img_paths, this.page_size)
+			this.current_data = this.chunk_data[this.page - 1]
+		},
 		onImgItem: function (e){
 			const type = e.target.dataset.type
-			const index = e.target.dataset.index
+			const index = Number(e.target.dataset.index)
 
-			this.style = 'cover'
+			this.style = 'contain'
 
 			if (!type) return (this.current = -1)
 
@@ -32,7 +67,7 @@ new Vue({
 					break
 				case 'url':
 					clipboardCopy(
-						'https://matrixage.github.io/images/' + this.img_paths[index]
+						'https://matrixage.github.io/images/' + this.current_data[index]
 					)
 					break
 				default:
@@ -45,6 +80,40 @@ new Vue({
 			if (!style) return
 
 			this.style = style
+		},
+		onChangeCurrent: function (e){
+			const type = e.target.dataset.type
+
+			if (!type) return
+
+			switch (type) {
+				case 'prev':
+					const target_prev = this.current - 1
+
+					if (target_prev >= 0) this.current = target_prev
+
+					break
+				case 'next':
+					const target_next = this.current + 1
+
+					if (target_next < this.current_data.length) this.current = target_next
+
+					break
+				default:
+					break
+			}
+		},
+		onPageItem: function (e){
+			const page = e.target.dataset.page
+
+			if (!page) return
+
+			this.page = page
+		},
+		onChangePageSize: function (e){
+			const target = e.target
+			// const index = target.options.seletedIndex
+			// this.page_size=this.array_page_size[index]
 		}
 	}
 })
