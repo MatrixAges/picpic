@@ -9,6 +9,7 @@ new Vue({
 		array_page_size: [ 10, 20, 40, 80 ],
 		chunk_data: [],
 		current_data: [],
+		visible_nav: true,
 		visible_msg: false,
 		timer_msg: 0,
 		msg: '',
@@ -34,10 +35,35 @@ new Vue({
 			this.chunk_data = _.chunk(this.img_paths, new_val)
 			this.current_data = this.chunk_data[0]
 			this.page = 1
-            },
-            search_text: function (new_val) {
-                  
-            }
+		},
+		search_text: _.throttle(
+			function (new_val){
+				if (!new_val) {
+					this.visible_nav = true
+					this.chunk_data = _.chunk(this.img_paths, this.page_size)
+					this.current_data = this.chunk_data[this.page - 1]
+					return
+				}
+
+				this.visible_nav = false
+
+				function fuzzyQuery (list, keyWord){
+					var arr = []
+
+					for (var i = 0; i < list.length; i++) {
+						if (list[i].indexOf(keyWord) >= 0) {
+							arr.push(list[i])
+						}
+					}
+
+					return arr
+				}
+
+				this.current_data = fuzzyQuery(this.img_paths, new_val)
+			},
+			360,
+			{ leading: false }
+		)
 	},
 	mounted: function (){
 		this.setLanding()
@@ -80,12 +106,13 @@ new Vue({
 
 					this.timer_msg = setTimeout(() => {
 						this.visible_msg = false
-                              }, 900)
-                              
-                              console.log(location.host);
+					}, 1200)
 
 					clipboardCopy(
-						'https://'+location.host+'/images/' + this.current_data[index]
+						'https://' +
+							location.host +
+							'/images/' +
+							this.current_data[index]
 					)
 					break
 				default:

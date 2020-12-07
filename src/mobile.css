@@ -1,31 +1,42 @@
 @media screen and (max-width:1200px) {
+      .search_wrap .search .input {
+            width: 60vw;
+      }
+
       .img_items .img_item_wrap {
-            width: calc(100vw / 5);
+            width: calc(80vw / 4);
       }
 
       .img_item {
-            height: calc(100vw / 5);
-      }
-
-      .img_items .img_item_wrap:hover .img_item {
-            height: calc(100vw / 5 - 12px);
-            border-radius: 6px;
+            height: calc(80vw / 4);
       }
 
       .img_items .img_item_wrap .options {
-            font-size: 12px;
+            font-size: 10px;
       }
 
-      .detail_wrap {
-            width: calc(100vw / 3);
+      .detail_wrap .detail {
+            width: calc(100vw / 1.5);
       }
 
-      .detail_wrap .img_item {
-            height: calc(100vw / 3);
+      .detail_wrap .detail .img_item {
+            height: calc(100vw / 1.5);
       }
 }
 
-@media screen and (max-width:720px) {
+@media screen and (max-width:880px) {
+      button:active {
+            transform: scale(1);
+      }
+
+      .search_wrap .search .input {
+            width: 72vw;
+      }
+
+      .img_items {
+            width: 100vw;
+      }
+
       .img_items .img_item_wrap {
             width: calc(100vw / 2);
       }
@@ -34,16 +45,48 @@
             height: calc(100vw / 2);
       }
 
-      .img_items .img_item_wrap:hover .img_item {
-            height: calc(100vw / 2 - 12px);
-            border-radius: 6px;
+      .detail_wrap {
+            display: none;
       }
 
-      .img_items .img_item_wrap .options {
+      .pagination_wrap {
+            width: 100%;
             font-size: 12px;
       }
 
-      .detail_wrap {
+      .pagination_wrap .pagination {
+            width: 100%;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+      }
+
+      .pagination_wrap .pagination .tabbar_items {
             display: none;
+      }
+
+      .pagination_wrap .pagination .btn_option:nth-of-type(1) {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            border-right: 1px solid #333;
+      }
+
+      .pagination_wrap .pagination .btn_option:nth-of-type(2) {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+      }
+
+      .pagination_wrap .pagination .tabbar_items .tabbar_item {
+            width: 27px;
+            height: 27px;
+            margin: 0 3px;
+            font-size: 12px;
+      }
+
+      #select_page_size{
+            margin-right: 12px;
+      }
+
+      #input_page{
+            margin-left: 12px;
       }
 }

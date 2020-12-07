@@ -5,6 +5,13 @@ body {
       color: black;
       font-size: 15px;
       background-color: white;
+      overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+      display: none !important;
+      width: 0 !important;
+      scrollbar-width: none !important;
 }
 
 button {
@@ -22,6 +29,30 @@ button:active {
 
 button:disabled {
       pointer-events: none;
+}
+
+a{
+      text-decoration: none;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+      transition: opacity 0.3s;
+}
+
+.fade-enter,
+.fade-leave-to {
+      opacity: 0;
+}
+
+.up-enter-active,
+.up-leave-active {
+      transition: transform 0.3s;
+}
+
+.up-enter,
+.up-leave-to {
+      transform:translateY(100%) ;
 }
 
 .disabled {
@@ -45,9 +76,44 @@ button:disabled {
       width: 100vw;
 }
 
+.search_wrap {
+      padding-top: 9vh;
+}
+
+.search_wrap .search {
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      color: black;
+}
+
+.search_wrap .search .input {
+      width: 42vw;
+      height: 64px;
+      padding: 0 24px;
+      text-align: center;
+      box-sizing: border-box;
+      border: 2px solid black;
+      background-color: white;
+      border-radius: 48px;
+      outline: none;
+      transition: all ease 0.3s;
+      font-size: 20px;
+      line-height: 64px;
+      color: black;
+}
+
+.search_wrap .search .link{
+      font-size: 13px;
+      color: #aaa;
+      margin-top: 12px;
+}
+
 .img_items {
       width: 80vw;
-      padding: 10vh 0;
+      padding-top: 6vh;
+      padding-bottom: 9vh;
       padding-bottom: 16vh;
 }
 
@@ -240,34 +306,6 @@ button:disabled {
       border: 1px solid black;
 }
 
-.search_wrap {
-      padding-top: 10vh;
-}
-
-.search_wrap .search {
-      border-bottom-left-radius: 12px;
-      border-bottom-right-radius: 12px;
-      backdrop-filter: blur(5px);
-      -webkit-backdrop-filter: blur(5px);
-      color: black;
-}
-
-.search_wrap .search .input {
-      width: 42vw;
-      height: 64px;
-      padding: 0 24px;
-      text-align: center;
-      box-sizing: border-box;
-      border: 2px solid black;
-      background-color: white;
-      border-radius: 48px;
-      outline: none;
-      transition: all ease 0.3s;
-      font-size: 20px;
-      line-height: 64px;
-      color: black;
-}
-
 #select_page_size {
       padding: 7px 9px;
       margin-right: 24px;
@@ -299,7 +337,7 @@ button:disabled {
       bottom: 24px;
       right: 24px;
       height: 48px;
-      padding:0 24px;
+      padding: 0 24px;
       border-radius: 4px;
       background-color: rgba(0, 0, 0, 0.9);
       color: white;
@@ -307,4 +345,5 @@ button:disabled {
       -webkit-backdrop-filter: blur(10px);
       font-size: 13px;
       line-height: 1;
+      z-index: 100;
 }
