@@ -4,7 +4,7 @@ body {
       margin: 0;
       color: black;
       font-size: 15px;
-      background-color: whitesmoke;
+      background-color: white;
 }
 
 button {
@@ -16,11 +16,15 @@ button {
       transition: all ease 0.3s;
 }
 
-button:active{
+button:active {
       transform: scale(0.92);
 }
 
-.disabled{
+button:disabled {
+      pointer-events: none;
+}
+
+.disabled {
       opacity: 0.3;
 }
 
@@ -205,6 +209,10 @@ button:active{
       border: 1px solid black;
 }
 
+.pagination_wrap .pagination .btn_option:disabled {
+      opacity: 0.2;
+}
+
 .pagination_wrap .pagination .tabbar_items {
       margin: 0 12px;
 }
@@ -221,9 +229,10 @@ button:active{
       transition: all ease 0.3s;
       cursor: pointer;
       font-size: 15px;
+      line-height: 1;
 }
 
-.pagination_wrap .pagination .tabbar_items .tabbar_item.active{
+.pagination_wrap .pagination .tabbar_items .tabbar_item.active {
       border: 1px solid black;
 }
 
@@ -249,7 +258,7 @@ button:active{
       padding: 0 24px;
       text-align: center;
       box-sizing: border-box;
-      border: 1px solid whitesmoke;
+      border: 1px solid black;
       background-color: white;
       border-radius: 48px;
       outline: none;
@@ -259,7 +268,7 @@ button:active{
       color: black;
 }
 
-#select_page_size{
+#select_page_size {
       padding: 7px 9px;
       margin-right: 24px;
       box-sizing: border-box;
@@ -272,7 +281,7 @@ button:active{
       outline: none;
 }
 
-#input_page{
+#input_page {
       width: 89px;
       padding: 9px 9px;
       margin-left: 24px;
@@ -284,4 +293,18 @@ button:active{
       color: black;
       border: 1px solid whitesmoke;
       outline: none;
+}
+
+.msg_wrap {
+      bottom: 24px;
+      right: 24px;
+      height: 48px;
+      padding:0 24px;
+      border-radius: 4px;
+      background-color: rgba(0, 0, 0, 0.9);
+      color: white;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      font-size: 13px;
+      line-height: 1;
 }

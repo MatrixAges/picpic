@@ -8,27 +8,33 @@ const main = async () => {
 		'assets/*.jpg',
 		'assets/*.jpeg'
 	])
-      const paths_target = []
-      
+	const paths_target = []
+
 	paths_source.map(item => paths_target.push(item.substr(7)))
 
 	const html = fs.readFileSync('src/source.html').toString().replace(
 		`
       <head>
-            <title>MatirxAge images bed</title>
+            <title>PicPic</title>
       </head>
 `,
 		`
       <head>
-            <title>MatirxAge images bed</title>
+            <title>PicPic</title>
             <script>
                   window.img_paths=${JSON.stringify(paths_target)}
+                  window._com={}
             </script>
       </head>
 `
 	)
 
-	if (!fs.existsSync('dist')) fs.mkdirSync('dist')
+	if (!fs.existsSync('dist')) {
+		fs.mkdirSync('dist')
+	} else {
+		fs.removeSync('dist')
+		fs.mkdirSync('dist')
+	}
 
 	fs.writeFileSync('dist/index.html', html)
 	fs.copySync('assets', 'dist')
