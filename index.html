@@ -1,10 +1,10 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 
       <head>
             <title>PicPic</title>
             <script>
-                  window.img_paths=["logo_light_design.png","logo_light_design_black.png","logo_light_design_black的副本.png","logo_light_design_black的副本2.png","logo_light_design_black的副本3.png","logo_light_design_black的副本4.png","logo_light_design的副本.png","logo_light_design的副本2.png","logo_light_design的副本3.png","logo_light_design的副本4.png","logo_light_design的副本5.png","logo_light_design的副本6.png","logo_light_design的副本7.png","logo_wave.png","logo_wave_black.png","logo_wave_black的副本.png","logo_wave_black的副本2.png","logo_wave_black的副本3.png","logo_wave_black的副本4.png","logo_wave_black的副本5.png","logo_wave_black的副本6.png","logo_wave_black的副本7.png","logo_wave的副本.png","logo_wave的副本2.png","logo_wave的副本3.png","logo_wave的副本4.png","logo_wave的副本5.png","bg_beauty_4k.jpg","bg_mountain_4k.jpg","bg_mountain_4k的副本.jpg","bg_mountain_4k的副本2.jpg","bg_mountain_4k的副本3.jpg","bg_mountain_4k的副本4.jpg"]
+                  window.img_paths=["abstract-5719221_1920.jpg","bg_beauty_4k.jpg","bg_mountain_4k.jpg","bird-763769_1920.jpg","birds-5791396_1920.jpg","bonsai-4634225_1920.jpg","books-2606859_1920.jpg","boy-5730628_1920.jpg","branches-4211837_1920.jpg","budapest-4011922_1920.jpg","buddhist-5695220_1920.jpg","cat-5778777_1920.jpg","cathedral-5793622_1920.jpg","clouds-5784152_1920.jpg","daisy-5679389_1920.jpg","dandelion-5048825_1920.jpg","dumbo-4582501_1920.jpg","eagle-3955951_1920.jpg","faro-5525698_1920.jpg","fire-4515924_1920.jpg","fisherman-4601744_1920.jpg","fjord-4614096_1920.jpg","flowers-5766495_1920.jpg","fog-4509607_1920.jpg","fox-5064828_1920.jpg","gunnera-5195132_1920.jpg","hill-top-town-1383789-1598x994.jpg","hongkong-4467663_1920.jpg","hot-air-balloons-4561263_1920.jpg","lake-5649878_1920.jpg","lake-5756911_1920.jpg","landscape-5000655_1920.jpg","landscape-5101153_1920.jpg","lighthouse-5454155_1920.jpg","lighthouse-5762071_1920.jpg","little-girl-5785590_1920.jpg","los-angeles-2679490_1920.jpg","mam-tor-5393685_1920.jpg","man-5737858_1920.jpg","meadow-5731886_1920.jpg","mountain-5678172_1920.jpg","mountains-5661718_1920.jpg","mountains-5778105_1920.jpg","natural-4653495_1920.jpg","osaka-5772121_1920.jpg","performers-5644247_1920.jpg","road-5743713_1920.jpg","rose-hip-5772615_1920.jpg","sail-5635065_1920.jpg","snow-5759500_1920.jpg","spring-5131048_1920.jpg","stars-5442598_1920.jpg","stones-5677828_1920.jpg","street-5680458_1920.jpg","sunlight-5779692_1920.jpg","taiwan-3973014_1920.jpg","train-5754933_1920.jpg","trees-4664060_1920.jpg","turnstile-5623053_1920.jpg","twig-789619_1920.jpg","viburnum-3060769_1920.jpg","whortleberry-5752417_1920.jpg","winter-4727156_1920.jpg","zebra-5651454_1920.jpg"]
             </script>
       </head>
 
@@ -26,13 +26,27 @@
                   style="opacity: 0;"
             >
                   <div class="search_wrap w_100 border_box flex justify_center">
-                        <div class="search flex justify_center align_center">
+                        <div class="search flex justify_center align_center flex_column">
                               <input
                                     class="input"
                                     type="text"
                                     placeholder="Search in your images"
                                     v-model="search_text"
                               >
+                              <div class="links flex">
+                                    <a
+                                          class="link mr_10"
+                                          href="https://github.com/MatrixAge"
+                                          target="_blank"
+                                          rel="noopener noreferrer"
+                                    >Design and made by Matrixage.</a>
+                                    <a
+                                          class="link"
+                                          href="https://github.com/MatrixAges/picpic"
+                                          target="_blank"
+                                          rel="noopener noreferrer"
+                                    >Here is the github repo.</a>
+                              </div>
                         </div>
                   </div>
                   <div class="img_items border_box flex flex_wrap align_start">
@@ -99,128 +113,135 @@
                                           @click.stop="onChangeCurrent"
                                     >
                                           <button
-                                                :class="Number(current)<=0?':disabled':''"
+                                                :class="Number(current)<=0?'disabled':''"
                                                 data-type="prev"
                                           >prev</button>
                                           <button
-                                                :class="Number(current)+1>=current_data.length?':disabled':''"
+                                                :class="Number(current)+1>=current_data.length?'disabled':''"
                                                 data-type="next"
                                           >next</button>
                                     </div>
                               </div>
                         </div>
                   </div>
-                  <div class="pagination_wrap w_100 border_box flex justify_center fixed z_index_100">
-                        <div class="pagination flex justify_center align_center">
-                              <select
-                                    id="select_page_size"
-                                    name="page_size"
-                                    v-model="page_size"
-                              >
-                                    <option
-                                          v-for="(item,index) in array_page_size"
-                                          :key="index"
-                                          :value="item"
-                                    >{{item}} /page</option>
-                              </select>
-                              <button
-                                    class="btn_option prev"
-                                    @click="onPrev"
-                                    :disabled="Number(page)-1<=0"
-                              >prev</button>
-                              <div
-                                    class="tabbar_items flex align_center"
-                                    @click="onPageItem"
-                              >
+                  <transition name="up">
+                        <div
+                              class="pagination_wrap w_100 border_box flex justify_center fixed z_index_100"
+                              v-show="visible_nav"
+                        >
+                              <div class="pagination flex justify_center align_center">
+                                    <select
+                                          id="select_page_size"
+                                          name="page_size"
+                                          v-model="page_size"
+                                    >
+                                          <option
+                                                v-for="(item,index) in array_page_size"
+                                                :key="index"
+                                                :value="item"
+                                          >{{item}} /page</option>
+                                    </select>
                                     <button
-                                          class="tabbar_item"
-                                          :data-page="Number(page)-4"
-                                          v-if="Number(page)-4>0"
-                                    >{{Number(page)-4}}</button>
+                                          class="btn_option prev"
+                                          @click="onPrev"
+                                          :disabled="Number(page)-1<=0"
+                                    >prev</button>
+                                    <div
+                                          class="tabbar_items flex align_center"
+                                          @click="onPageItem"
+                                    >
+                                          <button
+                                                class="tabbar_item"
+                                                :data-page="Number(page)-4"
+                                                v-if="Number(page)-4>0"
+                                          >{{Number(page)-4}}</button>
+                                          <button
+                                                class="tabbar_item"
+                                                :data-page="Number(page)-3"
+                                                v-if="Number(page)-3>0"
+                                          >{{Number(page)-3}}</button>
+                                          <button
+                                                class="tabbar_item"
+                                                :data-page="Number(page)-2"
+                                                v-if="Number(page)-2>0"
+                                          >{{Number(page)-2}}</button>
+                                          <button
+                                                class="tabbar_item"
+                                                :data-page="Number(page)-1"
+                                                v-if="Number(page)-1>0"
+                                          >{{Number(page)-1}}</button>
+                                          <button
+                                                class="tabbar_item active"
+                                                :data-page="Number(page)"
+                                          >{{Number(page)}}</button>
+                                          <button
+                                                class="tabbar_item"
+                                                :data-page="Number(page)+1"
+                                                :disabled="Number(page)+1>chunk_data.length"
+                                          >{{Number(page)+1}}</button>
+                                          <button
+                                                class="tabbar_item"
+                                                :data-page="Number(page)+2"
+                                                :disabled="Number(page)+2>chunk_data.length"
+                                          >{{Number(page)+2}}</button>
+                                          <button
+                                                class="tabbar_item"
+                                                :data-page="Number(page)+3"
+                                                :disabled="Number(page)+3>chunk_data.length"
+                                          >{{Number(page)+3}}</button>
+                                          <button
+                                                class="tabbar_item"
+                                                :data-page="Number(page)+4"
+                                                :disabled="Number(page)+4>chunk_data.length"
+                                          >{{Number(page)+4}}</button>
+                                          <button
+                                                class="tabbar_item"
+                                                :data-page="Number(page)+5"
+                                                v-if="page<5"
+                                                :disabled="Number(page)+5>chunk_data.length"
+                                          >{{Number(page)+5}}</button>
+                                          <button
+                                                class="tabbar_item"
+                                                :data-page="Number(page)+6"
+                                                v-if="page<4"
+                                                :disabled="Number(page)+6>chunk_data.length"
+                                          >{{Number(page)+6}}</button>
+                                          <button
+                                                class="tabbar_item"
+                                                :data-page="Number(page)+7"
+                                                v-if="page<3"
+                                                :disabled="Number(page)+7>chunk_data.length"
+                                          >{{Number(page)+7}}</button>
+                                          <button
+                                                class="tabbar_item"
+                                                :data-page="Number(page)"
+                                                v-if="page<2"
+                                                :disabled="Number(page)+8>chunk_data.length"
+                                          >{{Number(page)+8}}</button>
+                                    </div>
                                     <button
-                                          class="tabbar_item"
-                                          :data-page="Number(page)-3"
-                                          v-if="Number(page)-3>0"
-                                    >{{Number(page)-3}}</button>
-                                    <button
-                                          class="tabbar_item"
-                                          :data-page="Number(page)-2"
-                                          v-if="Number(page)-2>0"
-                                    >{{Number(page)-2}}</button>
-                                    <button
-                                          class="tabbar_item"
-                                          :data-page="Number(page)-1"
-                                          v-if="Number(page)-1>0"
-                                    >{{Number(page)-1}}</button>
-                                    <button
-                                          class="tabbar_item active"
-                                          :data-page="Number(page)"
-                                    >{{Number(page)}}</button>
-                                    <button
-                                          class="tabbar_item"
-                                          :data-page="Number(page)+1"
+                                          class="btn_option next"
+                                          @click="onNext"
                                           :disabled="Number(page)+1>chunk_data.length"
-                                    >{{Number(page)+1}}</button>
-                                    <button
-                                          class="tabbar_item"
-                                          :data-page="Number(page)+2"
-                                          :disabled="Number(page)+2>chunk_data.length"
-                                    >{{Number(page)+2}}</button>
-                                    <button
-                                          class="tabbar_item"
-                                          :data-page="Number(page)+3"
-                                          :disabled="Number(page)+3>chunk_data.length"
-                                    >{{Number(page)+3}}</button>
-                                    <button
-                                          class="tabbar_item"
-                                          :data-page="Number(page)+4"
-                                          :disabled="Number(page)+4>chunk_data.length"
-                                    >{{Number(page)+4}}</button>
-                                    <button
-                                          class="tabbar_item"
-                                          :data-page="Number(page)+5"
-                                          v-if="page<5"
-                                          :disabled="Number(page)+5>chunk_data.length"
-                                    >{{Number(page)+5}}</button>
-                                    <button
-                                          class="tabbar_item"
-                                          :data-page="Number(page)+6"
-                                          v-if="page<4"
-                                          :disabled="Number(page)+6>chunk_data.length"
-                                    >{{Number(page)+6}}</button>
-                                    <button
-                                          class="tabbar_item"
-                                          :data-page="Number(page)+7"
-                                          v-if="page<3"
-                                          :disabled="Number(page)+7>chunk_data.length"
-                                    >{{Number(page)+7}}</button>
-                                    <button
-                                          class="tabbar_item"
-                                          :data-page="Number(page)"
-                                          v-if="page<2"
-                                          :disabled="Number(page)+8>chunk_data.length"
-                                    >{{Number(page)+8}}</button>
+                                    >next</button>
+                                    <input
+                                          id="input_page"
+                                          ref="input_page"
+                                          type="number"
+                                          placeholder="jump to"
+                                          @keydown="onEnterPage"
+                                    >
                               </div>
-                              <button
-                                    class="btn_option next"
-                                    @click="onNext"
-                                    :disabled="Number(page)+1>chunk_data.length"
-                              >next</button>
-                              <input
-                                    id="input_page"
-                                    ref="input_page"
-                                    type="number"
-                                    placeholder="jump to"
-                                    @keydown="onEnterPage"
-                              >
                         </div>
-                  </div>
-                  <div
-                        class="msg_wrap fixed flex justify_center align_center"
-                        v-if="visible_msg"
-                  >
-                        <span class="msg">{{msg}}</span>
-                  </div>
+                  </transition>
+                  <transition name="fade">
+                        <div
+                              class="msg_wrap fixed flex justify_center align_center"
+                              v-if="visible_msg"
+                        >
+                              <span class="msg">{{msg}}</span>
+                        </div>
+                  </transition>
             </div>
       </body>
 
