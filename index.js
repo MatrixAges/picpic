@@ -8,7 +8,10 @@ new Vue({
 		page_size: 10,
 		array_page_size: [ 10, 20, 40, 80 ],
 		chunk_data: [],
-		current_data: []
+		current_data: [],
+		visible_msg: false,
+		timer_msg: 0,
+		msg: ''
 	},
 	filters: {
 		getStyles: function (path){
@@ -66,6 +69,15 @@ new Vue({
 					this.current = index
 					break
 				case 'url':
+					this.msg = 'link has copy to clipboard'
+					this.visible_msg = true
+
+					clearTimeout(this.timer_msg)
+
+					this.timer_msg = setTimeout(() => {
+						this.visible_msg = false
+					}, 900)
+
 					clipboardCopy(
 						'https://matrixage.github.io/images/' + this.current_data[index]
 					)
@@ -108,12 +120,26 @@ new Vue({
 
 			if (!page) return
 
-			this.page = page
+			this.page = Number(page)
 		},
-		onChangePageSize: function (e){
-			const target = e.target
-			// const index = target.options.seletedIndex
-			// this.page_size=this.array_page_size[index]
+		onPrev: function (){
+			const target_prev = this.page - 1
+
+			if (target_prev > 0) this.page = target_prev
+		},
+		onNext: function (){
+			const target_next = this.page + 1
+
+			if (target_next <= this.chunk_data.length) this.page = target_next
+		},
+		onEnterPage: function (e){
+			if (e.keyCode !== 13) return
+
+			const value = this.$refs.input_page.value
+
+			if (value <= 0 || value > this.chunk_data.length) return
+
+			this.page = value
 		}
 	}
 })

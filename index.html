@@ -2,14 +2,15 @@
 <html>
 
       <head>
-            <title>MatirxAge images bed</title>
+            <title>PicPic</title>
             <script>
                   window.img_paths=["logo_light_design.png","logo_light_design_black.png","logo_light_design_black的副本.png","logo_light_design_black的副本2.png","logo_light_design_black的副本3.png","logo_light_design_black的副本4.png","logo_light_design的副本.png","logo_light_design的副本2.png","logo_light_design的副本3.png","logo_light_design的副本4.png","logo_light_design的副本5.png","logo_light_design的副本6.png","logo_light_design的副本7.png","logo_wave.png","logo_wave_black.png","logo_wave_black的副本.png","logo_wave_black的副本2.png","logo_wave_black的副本3.png","logo_wave_black的副本4.png","logo_wave_black的副本5.png","logo_wave_black的副本6.png","logo_wave_black的副本7.png","logo_wave的副本.png","logo_wave的副本2.png","logo_wave的副本3.png","logo_wave的副本4.png","logo_wave的副本5.png","bg_beauty_4k.jpg","bg_mountain_4k.jpg","bg_mountain_4k的副本.jpg","bg_mountain_4k的副本2.jpg","bg_mountain_4k的副本3.jpg","bg_mountain_4k的副本4.jpg"]
+                  window._com={}
             </script>
       </head>
 
       <style>
-            @import './atom.min.css';
+            @import './libs/css/atom.min.css';
             @import './index.css';
             @import './mobile.css';
       </style>
@@ -30,7 +31,7 @@
                               <input
                                     class="input"
                                     type="text"
-                                    placeholder="Search"
+                                    placeholder="Search in your images"
                               >
                         </div>
                   </div>
@@ -98,11 +99,11 @@
                                           @click.stop="onChangeCurrent"
                                     >
                                           <button
-                                                :class="Number(current)<=0?'disabled':''"
+                                                :class="Number(current)<=0?':disabled':''"
                                                 data-type="prev"
                                           >prev</button>
                                           <button
-                                                :class="Number(current)+1>=current_data.length?'disabled':''"
+                                                :class="Number(current)+1>=current_data.length?':disabled':''"
                                                 data-type="next"
                                           >next</button>
                                     </div>
@@ -122,7 +123,11 @@
                                           :value="item"
                                     >{{item}} /page</option>
                               </select>
-                              <button class="btn_option prev">prev</button>
+                              <button
+                                    class="btn_option prev"
+                                    @click="onPrev"
+                                    :disabled="Number(page)-1<=0"
+                              >prev</button>
                               <div
                                     class="tabbar_items flex align_center"
                                     @click="onPageItem"
@@ -154,54 +159,74 @@
                                     <button
                                           class="tabbar_item"
                                           :data-page="Number(page)+1"
+                                          :disabled="Number(page)+1>chunk_data.length"
                                     >{{Number(page)+1}}</button>
                                     <button
                                           class="tabbar_item"
                                           :data-page="Number(page)+2"
+                                          :disabled="Number(page)+2>chunk_data.length"
                                     >{{Number(page)+2}}</button>
                                     <button
                                           class="tabbar_item"
                                           :data-page="Number(page)+3"
+                                          :disabled="Number(page)+3>chunk_data.length"
                                     >{{Number(page)+3}}</button>
                                     <button
                                           class="tabbar_item"
                                           :data-page="Number(page)+4"
+                                          :disabled="Number(page)+4>chunk_data.length"
                                     >{{Number(page)+4}}</button>
                                     <button
                                           class="tabbar_item"
                                           :data-page="Number(page)+5"
                                           v-if="page<5"
+                                          :disabled="Number(page)+5>chunk_data.length"
                                     >{{Number(page)+5}}</button>
                                     <button
                                           class="tabbar_item"
                                           :data-page="Number(page)+6"
                                           v-if="page<4"
+                                          :disabled="Number(page)+6>chunk_data.length"
                                     >{{Number(page)+6}}</button>
                                     <button
                                           class="tabbar_item"
                                           :data-page="Number(page)+7"
                                           v-if="page<3"
+                                          :disabled="Number(page)+7>chunk_data.length"
                                     >{{Number(page)+7}}</button>
                                     <button
                                           class="tabbar_item"
                                           :data-page="Number(page)"
                                           v-if="page<2"
+                                          :disabled="Number(page)+8>chunk_data.length"
                                     >{{Number(page)+8}}</button>
                               </div>
-                              <button class="btn_option next">next</button>
+                              <button
+                                    class="btn_option next"
+                                    @click="onNext"
+                                    :disabled="Number(page)+1>chunk_data.length"
+                              >next</button>
                               <input
                                     id="input_page"
+                                    ref="input_page"
                                     type="number"
                                     placeholder="jump to"
+                                    @keydown="onEnterPage"
                               >
                         </div>
+                  </div>
+                  <div
+                        class="msg_wrap fixed flex justify_center align_center"
+                        v-if="visible_msg"
+                  >
+                        <span class="msg">{{msg}}</span>
                   </div>
             </div>
       </body>
 
-      <script src='./vue.min.js'></script>
-      <script src='./lodash.min.js'></script>
-      <script src='./clipboard.js'></script>
+      <script src='./libs/js/vue.min.js'></script>
+      <script src='./libs/js/lodash.min.js'></script>
+      <script src='./libs/js/clipboard.js'></script>
       <script src='./index.js'> </script>
 
 </html>
