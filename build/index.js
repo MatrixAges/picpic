@@ -23,7 +23,6 @@ const main = async () => {
             <title>PicPic</title>
             <script>
                   window.img_paths=${JSON.stringify(paths_target)}
-                  window._com={}
             </script>
       </head>
 `

@@ -11,7 +11,8 @@ new Vue({
 		current_data: [],
 		visible_msg: false,
 		timer_msg: 0,
-		msg: ''
+		msg: '',
+		search_text: ''
 	},
 	filters: {
 		getStyles: function (path){
@@ -33,7 +34,10 @@ new Vue({
 			this.chunk_data = _.chunk(this.img_paths, new_val)
 			this.current_data = this.chunk_data[0]
 			this.page = 1
-		}
+            },
+            search_text: function (new_val) {
+                  
+            }
 	},
 	mounted: function (){
 		this.setLanding()
@@ -76,10 +80,12 @@ new Vue({
 
 					this.timer_msg = setTimeout(() => {
 						this.visible_msg = false
-					}, 900)
+                              }, 900)
+                              
+                              console.log(location.host);
 
 					clipboardCopy(
-						'https://matrixage.github.io/images/' + this.current_data[index]
+						'https://'+location.host+'/images/' + this.current_data[index]
 					)
 					break
 				default:
