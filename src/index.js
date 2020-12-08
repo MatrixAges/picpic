@@ -13,7 +13,8 @@ new Vue({
 		visible_msg: false,
 		timer_msg: 0,
 		msg: '',
-		search_text: ''
+		search_text: '',
+		header_no_border: false
 	},
 	filters: {
 		getStyles: function (path){
@@ -68,8 +69,31 @@ new Vue({
 	mounted: function (){
 		this.setLanding()
 		this.setChunkData()
+
+		window.addEventListener(
+			'scroll',
+			_.throttle(this.handleScroll, 360, { leading: false })
+		)
+	},
+	destroyed () {
+		document.removeEventListener(
+			'scroll',
+			_.throttle(this.handleScroll, 360, { leading: false })
+		)
 	},
 	methods: {
+		handleScroll () {
+			const scrollTop =
+				window.pageYOffset ||
+				document.documentElement.scrollTop ||
+				document.body.scrollTop
+
+			if (scrollTop > this.$refs.img_items.offsetTop) {
+				this.header_no_border = true
+			} else {
+				this.header_no_border = false
+			}
+		},
 		setLanding: function (){
 			setTimeout(() => {
 				const landing_wrap = document.querySelector('#landing_wrap')
