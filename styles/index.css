@@ -9,6 +9,7 @@
 :root {
       --size_img: 16vw;
       --size_detail: 50vw;
+      --color_bg: #f8f9fd;
 }
 
 .landing_wrap {
@@ -16,15 +17,14 @@
 }
 
 .header_wrap_placeholder {
-      height: 72px;
+      height: 75px;
 }
 
 .header_wrap {
       z-index: 10;
-      background-color: rgba(255, 255, 255, 0.72);
       backdrop-filter: blur(5px);
       -webkit-backdrop-filter: blur(5px);
-      border-bottom: 1px solid whitesmoke;
+      border-bottom: 1px solid #f3f3f3;
 }
 
 .header {
@@ -38,13 +38,47 @@
       margin-left: 10px;
 }
 
+.header .right_wrap .options {
+      margin-right: 15px;
+}
+
+.header .d_line {
+      width: 1px;
+      height: 20px;
+      background-color: #f1f1f1;
+}
+
+.header .right_wrap.scrolled .d_line {
+      background-color: rgb(241, 241, 241, 0.3);
+}
+
+.header .right_wrap .options .option_item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      transition: all ease 0.3s;
+      background-color: white;
+      cursor: pointer;
+}
+
+.header .right_wrap.scrolled .options .option_item {
+      background-color: rgba(248, 249, 253, 0.6);
+}
+
+.header .right_wrap .link_items {
+      margin-left: 15px;
+}
+
 .header .logo {
       max-width: 40px;
       margin-left: -4px;
 }
 
 .header .logo_matrixage {
-      max-width: 20px;
+      max-width: 18px;
       border-radius: 4px;
 }
 
@@ -54,22 +88,24 @@
       align-items: center;
       width: 36px;
       height: 36px;
-      border-radius: 36px;
-      border: 1px solid whitesmoke;
+      border-radius: 50%;
       transition: all ease 0.3s;
+      background-color: white;
+}
+
+.header .right_wrap.scrolled .link {
+      background-color: rgba(248, 249, 253, 0.6);
 }
 
 .header .right_wrap .link:hover {
-      background-color: whitesmoke;
+      box-shadow: 0 0 30px #eee;
 }
 
-.options_wrap {
-      width: 80vw;
-      padding-top: 72px;
-      padding-bottom: 24px;
+.search_wrap {
+      left: calc(50% - 180px);
 }
 
-.options_wrap .search_wrap .search {
+.search_wrap .search {
       border-bottom-left-radius: 12px;
       border-bottom-right-radius: 12px;
       backdrop-filter: blur(5px);
@@ -77,41 +113,29 @@
       color: black;
 }
 
-.options_wrap .search_wrap .search .icon_search {
-      left: 10px;
-      opacity: 0.5;
-}
-
-.options_wrap .search_wrap .search .input {
+.search_wrap .search .input {
       width: 360px;
       height: 40px;
       padding: 0 24px;
-      padding-left: 36px;
       box-sizing: border-box;
-      background-color: white;
-      border: 1px solid whitesmoke;
-      border-radius: 4px;
+      border: none;
       outline: none;
       transition: all ease 0.3s;
       line-height: 40px;
       color: black;
-}
-
-.options_wrap .search_wrap .search .input:focus {
       box-shadow: 0 0 30px #eee;
       border-radius: 40px;
+      background-color: white;
+      text-align: center;
 }
 
-.search_wrap .search .link {
-      font-size: 13px;
-      color: #aaa;
-      margin-top: 12px;
+.search_wrap.scrolled .search .input {
+      background-color: rgba(248, 249, 253, 0.8);
 }
 
 .img_items {
       width: 80vw;
-      padding-bottom: 9vh;
-      padding-bottom: 16vh;
+      padding: 12vh 0;
 }
 
 .img_items .img_item_wrap {
@@ -242,6 +266,30 @@
       border-right: 1px solid #eee;
 }
 
+.detail_wrap .btn_autoplay {
+      bottom: 18px;
+      right: 140px;
+      width: 72px;
+      padding: 5px 0;
+      font-size: 12px;
+      cursor: pointer;
+      background-color: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid #eee;
+      border-radius: 100px;
+}
+
+.detail_wrap .btn_autoplay:hover {
+      box-shadow: 0 0 30px #ccc;
+}
+
+.detail_wrap .btn_autoplay:active,
+.detail_wrap .btn_autoplay.playing {
+      background-color: black;
+      color: white;
+}
+
 .pagination_wrap {
       bottom: 0;
 }
@@ -250,9 +298,9 @@
       padding: 18px 24px;
       border-top-left-radius: 12px;
       border-top-right-radius: 12px;
-      background-color: rgba(255, 255, 255, 0.72);
-      backdrop-filter: blur(5px);
-      -webkit-backdrop-filter: blur(5px);
+      background-color: rgba(248, 249, 253, 0.72);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
       color: black;
 }
 
@@ -343,4 +391,10 @@
       font-size: 13px;
       line-height: 1;
       z-index: 100;
+}
+
+.DandM {
+      color: #ddd;
+      font-size: 14px;
+      margin-top: 5vh;
 }

@@ -4,7 +4,7 @@ body {
       margin: 0;
       color: black;
       font-size: 15px;
-      background-color: white;
+      background-color: var(--color_bg);
       overflow-x: hidden;
 }
 

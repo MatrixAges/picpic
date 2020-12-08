@@ -6,15 +6,18 @@ new Vue({
 		style: 'contain',
 		page: 1,
 		page_size: 10,
-		array_page_size: [ 10, 20, 40, 80 ],
+		array_page_size: [ 10, 20, 40, 80, 99999999 ],
 		chunk_data: [],
 		current_data: [],
 		visible_nav: true,
 		visible_msg: false,
+		visible_search: false,
 		timer_msg: 0,
 		msg: '',
 		search_text: '',
-		header_no_border: false
+		header_no_border: false,
+		autoplay: false,
+		timer_autoplay: 0
 	},
 	filters: {
 		getStyles: function (path){
@@ -29,6 +32,45 @@ new Vue({
 		}
 	},
 	watch: {
+		current: function (new_val){
+			this.$nextTick(() => {
+				const detail_wrap = document.querySelector('#detail_wrap')
+
+				if (new_val !== -1) {
+					detail_wrap.addEventListener(
+						'mousewheel',
+						function (e){
+							e.preventDefault()
+						},
+						false
+					)
+
+					detail_wrap.addEventListener(
+						'touchmove',
+						function (e){
+							e.preventDefault()
+						},
+						false
+					)
+				} else {
+					detail_wrap.removeEventListener(
+						'mousewheel',
+						function (e){
+							e.preventDefault()
+						},
+						false
+					)
+
+					detail_wrap.removeEventListener(
+						'touchmove',
+						function (e){
+							e.preventDefault()
+						},
+						false
+					)
+				}
+			})
+		},
 		page: function (new_val){
 			this.current_data = this.chunk_data[new_val - 1]
 		},
@@ -36,6 +78,8 @@ new Vue({
 			this.chunk_data = _.chunk(this.img_paths, new_val)
 			this.current_data = this.chunk_data[0]
 			this.page = 1
+
+			localStorage.setItem('page_size', Number(new_val))
 		},
 		search_text: _.throttle(
 			function (new_val){
@@ -69,17 +113,12 @@ new Vue({
 	mounted: function (){
 		this.setLanding()
 		this.setChunkData()
+		this.getLocalStorage()
 
-		window.addEventListener(
-			'scroll',
-			_.throttle(this.handleScroll, 360, { leading: false })
-		)
+		window.addEventListener('scroll', this.handleScroll)
 	},
 	destroyed () {
-		document.removeEventListener(
-			'scroll',
-			_.throttle(this.handleScroll, 360, { leading: false })
-		)
+		document.removeEventListener('scroll', this.handleScroll)
 	},
 	methods: {
 		handleScroll () {
@@ -88,7 +127,7 @@ new Vue({
 				document.documentElement.scrollTop ||
 				document.body.scrollTop
 
-			if (scrollTop > this.$refs.img_items.offsetTop) {
+			if (scrollTop + 72 > this.$refs.img_items.offsetTop) {
 				this.header_no_border = true
 			} else {
 				this.header_no_border = false
@@ -110,17 +149,30 @@ new Vue({
 			this.chunk_data = _.chunk(this.img_paths, this.page_size)
 			this.current_data = this.chunk_data[this.page - 1]
 		},
+		getLocalStorage: function (){
+			const page_size = localStorage.getItem('page_size')
+			const style = localStorage.getItem('style')
+
+			if (page_size) this.page_size = page_size
+			if (style) this.style = style
+		},
 		onImgItem: function (e){
 			const type = e.target.dataset.type
 			const index = Number(e.target.dataset.index)
 
-			this.style = 'contain'
+			if (!type) {
+				this.current = -1
+                        this.autoplay = false
+                        
+				clearInterval(this.timer_autoplay)
 
-			if (!type) return (this.current = -1)
+				return
+			}
 
 			switch (type) {
 				case 'img':
 					this.current = index
+
 					break
 				case 'url':
 					this.msg = 'link has copy to clipboard'
@@ -149,6 +201,26 @@ new Vue({
 			if (!style) return
 
 			this.style = style
+
+			localStorage.setItem('style', style)
+		},
+		onToggleAutoPlay: function (){
+			this.autoplay = !this.autoplay
+
+			if (this.autoplay) {
+				this.timer_autoplay = setInterval(() => {
+					const target_next = this.current + 1
+
+					if (target_next < this.current_data.length) {
+						this.current = target_next
+					} else {
+						this.autoplay = false
+						clearInterval(this.timer_autoplay)
+					}
+				}, 2400)
+			} else {
+				clearInterval(this.timer_autoplay)
+			}
 		},
 		onChangeCurrent: function (e){
 			const type = e.target.dataset.type
@@ -197,6 +269,10 @@ new Vue({
 			if (value <= 0 || value > this.chunk_data.length) return
 
 			this.page = value
+		},
+		onToggleSearch () {
+			this.visible_search = !this.visible_search
+			this.search_text = ''
 		}
 	}
 })
