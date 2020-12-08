@@ -1,0 +1,60 @@
+html,
+body {
+      padding: 0;
+      margin: 0;
+      color: black;
+      font-size: 15px;
+      background-color: white;
+      overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+      display: none !important;
+      width: 0 !important;
+      scrollbar-width: none !important;
+}
+
+button {
+      padding: 0;
+      margin: 0;
+      outline: none;
+      border: none;
+      background-color: transparent;
+      transition: all ease 0.3s;
+}
+
+button:active {
+      transform: scale(0.92);
+}
+
+button:disabled {
+      pointer-events: none;
+}
+
+a {
+      text-decoration: none;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+      transition: opacity 0.3s;
+}
+
+.fade-enter,
+.fade-leave-to {
+      opacity: 0;
+}
+
+.up-enter-active,
+.up-leave-active {
+      transition: transform 0.3s;
+}
+
+.up-enter,
+.up-leave-to {
+      transform: translateY(100%);
+}
+
+.disabled {
+      opacity: 0.3;
+}
