@@ -1,8 +1,4 @@
 @media screen and (max-width:1200px) {
-      .search_wrap .search .input {
-            width: 60vw;
-      }
-
       .img_items .img_item_wrap {
             width: calc(80vw / 4);
       }
@@ -24,9 +20,19 @@
       }
 }
 
-@media screen and (max-width:880px) {
+@media screen and (max-width:640px) {
       button:active {
             transform: scale(1);
+      }
+
+      .header{
+            width: 100vw;
+            padding:0 24px;
+      }
+
+      .header .right_wrap .options,
+      .header .d_line {
+            display: none;
       }
 
       .search_wrap .search .input {
@@ -35,6 +41,7 @@
 
       .img_items {
             width: 100vw;
+            padding-top: 0;
       }
 
       .img_items .img_item_wrap {
@@ -82,11 +89,11 @@
             font-size: 12px;
       }
 
-      #select_page_size{
+      #select_page_size {
             margin-right: 12px;
       }
 
-      #input_page{
+      #input_page {
             margin-left: 12px;
       }
 }

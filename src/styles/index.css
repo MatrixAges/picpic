@@ -24,7 +24,7 @@
       z-index: 10;
       backdrop-filter: blur(5px);
       -webkit-backdrop-filter: blur(5px);
-      border-bottom: 1px solid #f3f3f3;
+      border-bottom: 1px solid #eee;
 }
 
 .header {
@@ -38,6 +38,10 @@
       margin-left: 10px;
 }
 
+.header .left_wrap.scrolled .name{
+      color: white;
+}
+
 .header .right_wrap .options {
       margin-right: 15px;
 }
@@ -45,11 +49,11 @@
 .header .d_line {
       width: 1px;
       height: 20px;
-      background-color: #f1f1f1;
+      background-color: #eee;
 }
 
 .header .right_wrap.scrolled .d_line {
-      background-color: rgb(241, 241, 241, 0.3);
+      background-color: rgb(241, 241, 241, 0.2);
 }
 
 .header .right_wrap .options .option_item {
@@ -120,17 +124,22 @@
       box-sizing: border-box;
       border: none;
       outline: none;
-      transition: all ease 0.3s;
       line-height: 40px;
       color: black;
-      box-shadow: 0 0 30px #eee;
       border-radius: 40px;
-      background-color: white;
+      background-color: transparent;
       text-align: center;
+      border: 1px solid black;
+      transition: all ease 0.3s;
 }
 
 .search_wrap.scrolled .search .input {
-      background-color: rgba(248, 249, 253, 0.8);
+      border: 1px solid white;
+      color: white;
+}
+
+.search_wrap.scrolled .search .input::placeholder{
+      color: rgba(255, 255, 255, 0.72);
 }
 
 .img_items {
@@ -321,7 +330,7 @@
 }
 
 .pagination_wrap .pagination .btn_option:disabled {
-      opacity: 0.2;
+      opacity: 0.1;
 }
 
 .pagination_wrap .pagination .tabbar_items {
@@ -336,7 +345,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      border: 1px solid whitesmoke;
+      border: 1px solid rgba(0, 0, 0, 0.05);
       transition: all ease 0.3s;
       cursor: pointer;
       font-size: 15px;
@@ -360,7 +369,7 @@
       cursor: pointer;
       background-color: transparent;
       color: black;
-      border: 1px solid whitesmoke;
+      border: 1px solid  rgba(0, 0, 0, 0.05);
       outline: none;
 }
 
@@ -374,7 +383,7 @@
       cursor: pointer;
       background-color: transparent;
       color: black;
-      border: 1px solid whitesmoke;
+      border: 1px solid  rgba(0, 0, 0, 0.05);
       outline: none;
 }
 
@@ -397,4 +406,14 @@
       color: #ddd;
       font-size: 14px;
       margin-top: 5vh;
+}
+
+.empty_wrap{
+      width: 100%;
+      height: calc(100vh - 75px - 72px);
+      opacity: 0.15;
+}
+
+.empty_wrap span{
+      margin-top: 12px;
 }
