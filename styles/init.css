@@ -6,6 +6,7 @@ body {
       font-size: 15px;
       background-color: var(--color_bg);
       overflow-x: hidden;
+      font-family: ProximaNova, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 ::-webkit-scrollbar {

@@ -17,7 +17,8 @@ new Vue({
 		search_text: '',
 		header_no_border: false,
 		autoplay: false,
-		timer_autoplay: 0
+		timer_autoplay: 0,
+		is_mobile: false
 	},
 	filters: {
 		getStyles: function (path){
@@ -111,6 +112,7 @@ new Vue({
 		)
 	},
 	mounted: function (){
+		this.getDeviceInfo()
 		this.setLanding()
 		this.setChunkData()
 		this.getLocalStorage()
@@ -121,13 +123,21 @@ new Vue({
 		document.removeEventListener('scroll', this.handleScroll)
 	},
 	methods: {
+		getDeviceInfo () {
+			if (document.body.offsetWidth <= 640) {
+				this.is_mobile = true
+			} else {
+				this.is_mobile = false
+			}
+		},
 		handleScroll () {
 			const scrollTop =
 				window.pageYOffset ||
 				document.documentElement.scrollTop ||
 				document.body.scrollTop
+			const top = this.is_mobile ? 0 : this.$refs.img_items.offsetTop
 
-			if (scrollTop + 72 > this.$refs.img_items.offsetTop) {
+			if (scrollTop > top) {
 				this.header_no_border = true
 			} else {
 				this.header_no_border = false
@@ -147,7 +157,7 @@ new Vue({
 		},
 		setChunkData: function (){
 			this.chunk_data = _.chunk(this.img_paths, this.page_size)
-			this.current_data = this.chunk_data[this.page - 1]
+                  this.current_data = this.chunk_data[this.page - 1]
 		},
 		getLocalStorage: function (){
 			const page_size = localStorage.getItem('page_size')
@@ -162,8 +172,8 @@ new Vue({
 
 			if (!type) {
 				this.current = -1
-                        this.autoplay = false
-                        
+				this.autoplay = false
+
 				clearInterval(this.timer_autoplay)
 
 				return
