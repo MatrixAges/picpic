@@ -70,10 +70,9 @@
                                     </div>
                               </transition>
                               <div :class="['right_wrap flex align_center',header_no_border?'scrolled':'']">
-
                                     <div class="options flex align_center">
                                           <button
-                                                class="option_item"
+                                                class="option_item mr_12"
                                                 @click="onToggleSearch"
                                           >
                                                 <svg
@@ -115,6 +114,37 @@
                                                             stroke-width='32'
                                                             d='M368 368L144 144M368 144L144 368'
                                                       />
+                                                </svg>
+                                          </button>
+                                          <button
+                                                class="option_item"
+                                                @click="onToggleMode"
+                                          >
+                                                <svg
+                                                      xmlns='http://www.w3.org/2000/svg'
+                                                      viewBox='0 0 512 512'
+                                                      width="21"
+                                                      height="21"
+                                                      v-show="mode==='list'"
+                                                >
+                                                      <path
+                                                            fill='none'
+                                                            stroke='currentColor'
+                                                            stroke-linecap='round'
+                                                            stroke-miterlimit='10'
+                                                            stroke-width='48'
+                                                            d='M88 152h336M88 256h336M88 360h336'
+                                                      />
+                                                </svg>
+                                                <svg
+                                                      xmlns='http://www.w3.org/2000/svg'
+                                                      viewBox='0 0 512 512'
+                                                      width="18"
+                                                      height="18"
+                                                      v-show="mode==='block'"
+                                                >
+                                                      <path
+                                                            d='M204 240H68a36 36 0 01-36-36V68a36 36 0 0136-36h136a36 36 0 0136 36v136a36 36 0 01-36 36zM444 240H308a36 36 0 01-36-36V68a36 36 0 0136-36h136a36 36 0 0136 36v136a36 36 0 01-36 36zM204 480H68a36 36 0 01-36-36V308a36 36 0 0136-36h136a36 36 0 0136 36v136a36 36 0 01-36 36zM444 480H308a36 36 0 01-36-36V308a36 36 0 0136-36h136a36 36 0 0136 36v136a36 36 0 01-36 36z' />
                                                 </svg>
                                           </button>
                                     </div>
@@ -162,7 +192,7 @@
                         v-if="current_data.length"
                   >
                         <div
-                              class="img_item_wrap flex flex_column relative"
+                              :class="['img_item_wrap flex flex_column relative',is_mobile?'mobile':'']"
                               v-for="(item,index) in current_data"
                               :key="index"
                               @click="onImgItem"
@@ -270,6 +300,27 @@
                                                       data-style="cover"
                                                 >cover</button>
                                           </div>
+                                          <a
+                                                class="btn_download absolute border_box flex justify_center align_center transition_normal"
+                                                :href="'./'+current_data[current]"
+                                                :download="current_data[current]"
+                                                @click.stop=""
+                                          >
+                                                <svg
+                                                      xmlns='http://www.w3.org/2000/svg'
+                                                      viewBox='0 0 512 512'
+                                                      width="15"
+                                                      height="15"
+                                                >
+                                                      <path
+                                                            fill='none'
+                                                            stroke='currentColor'
+                                                            stroke-linecap='round'
+                                                            stroke-linejoin='round'
+                                                            stroke-width='48'
+                                                            d='M112 268l144 144 144-144M256 392V100'
+                                                      /></svg>
+                                          </a>
                                           <button
                                                 :class="['btn_autoplay absolute',autoplay?'playing':'']"
                                                 @click.stop="onToggleAutoPlay"

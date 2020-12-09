@@ -20,14 +20,28 @@
       }
 }
 
-@media screen and (max-width:640px) {
+@media screen and (max-width:1000px) {
+      .img_items .img_item_wrap {
+            width: calc(80vw / 3);
+      }
+
+      .img_item {
+            height: calc(80vw / 3);
+      }
+}
+
+@media screen and (max-width:800px) {
       button:active {
             transform: scale(1);
       }
 
-      .header{
+      .header_wrap {
+            border-bottom: none;
+      }
+
+      .header {
             width: 100vw;
-            padding:0 24px;
+            padding: 0 24px;
       }
 
       .header .right_wrap .options,
@@ -76,6 +90,7 @@
             width: 100%;
             border-top-left-radius: 20px;
             border-top-right-radius: 20px;
+            background-color: white;
       }
 
       .pagination_wrap .pagination .tabbar_items {
@@ -106,5 +121,16 @@
 
       #input_page {
             margin-left: 12px;
+      }
+
+      .msg_wrap {
+            width: 48vw;
+            height: 36px;
+            padding: 0;
+            bottom: 100px;
+            right: initial;
+            background-color: white;
+            color: black;
+            font-size: 12px;
       }
 }

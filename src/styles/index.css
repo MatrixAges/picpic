@@ -165,7 +165,7 @@
       transition: all ease 0.3s;
 }
 
-.img_items .img_item_wrap:hover .options {
+.img_items .img_item_wrap:hover .options,.img_items .img_item_wrap.mobile .options {
       transform: translateY(0);
 }
 
@@ -273,6 +273,30 @@
 
 .detail_options.current button:first-child {
       border-right: 1px solid #eee;
+}
+
+.detail_wrap .btn_download {
+      bottom: 18px;
+      right: 224px;
+      width: 26px;
+      height: 26px;
+      border-radius: 100px;
+      font-size: 12px;
+      cursor: pointer;
+      background-color: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid #eee;
+      color: black;
+}
+
+.detail_wrap .btn_download:active{
+      background-color: black;
+      color: white;
+}
+
+.detail_wrap .btn_download:hover {
+      box-shadow: 0 0 30px #ccc;
 }
 
 .detail_wrap .btn_autoplay {
