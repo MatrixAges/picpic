@@ -53,7 +53,18 @@
       }
 
       .detail_wrap {
-            display: none;
+            align-items: flex-end;
+      }
+
+      .detail_wrap .detail {
+            width: 100vw;
+            border-radius: 0;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+      }
+
+      .detail_wrap .detail .img_item {
+            height: 100vw;
       }
 
       .pagination_wrap {
