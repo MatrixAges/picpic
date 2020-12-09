@@ -41,7 +41,8 @@ const main = async () => {
 
 	fs.writeFileSync('dist/index.html', html)
 	fs.copySync('assets', 'dist')
-	fs.copySync('src', 'dist')
+      fs.copySync('src', 'dist')
+	fs.removeSync('dist/styles/index.less')
 	fs.removeSync('dist/source.html')
 }
 

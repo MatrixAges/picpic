@@ -129,8 +129,27 @@
             padding: 0;
             bottom: 100px;
             right: initial;
-            background-color: white;
-            color: black;
+            background-color: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(9px);
+            -webkit-backdrop-filter: blur(9px);
+            color: white;
             font-size: 12px;
+      }
+}
+
+@media screen and (max-width:376px) {
+      .btn_download {
+            display: none;
+      }
+}
+
+
+@media screen and (max-width:321px) {
+      #input_page {
+            display: none;
+      }
+
+      .btn_autoplay {
+            display: none;
       }
 }
