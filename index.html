@@ -45,8 +45,15 @@
                               <div :class="['left_wrap flex align_center',header_no_border?'scrolled':'']">
                                     <img
                                           class="logo"
-                                          :src="header_no_border?'./images/logo_picpic_white.png':'./images/logo_picpic_black.png'"
+                                          src="./images/logo_picpic_black.png"
                                           alt="logo"
+                                          v-show="!header_no_border"
+                                    >
+                                    <img
+                                          class="logo"
+                                          src="./images/logo_picpic_white.png"
+                                          alt="logo"
+                                          v-show="header_no_border"
                                     >
                                     <span class="name">PicPic</span>
                               </div>
