@@ -18,7 +18,8 @@ new Vue({
 		header_no_border: false,
 		autoplay: false,
 		timer_autoplay: 0,
-		is_mobile: false
+		is_mobile: false,
+		mode: 'block'
 	},
 	filters: {
 		getStyles: function (path){
@@ -124,7 +125,7 @@ new Vue({
 	},
 	methods: {
 		getDeviceInfo () {
-			if (document.body.offsetWidth <= 640) {
+			if (document.body.offsetWidth <= 800) {
 				this.is_mobile = true
 			} else {
 				this.is_mobile = false
@@ -157,7 +158,7 @@ new Vue({
 		},
 		setChunkData: function (){
 			this.chunk_data = _.chunk(this.img_paths, this.page_size)
-                  this.current_data = this.chunk_data[this.page - 1]
+			this.current_data = this.chunk_data[this.page - 1]
 		},
 		getLocalStorage: function (){
 			const page_size = localStorage.getItem('page_size')
@@ -283,6 +284,10 @@ new Vue({
 		onToggleSearch () {
 			this.visible_search = !this.visible_search
 			this.search_text = ''
+		},
+            onToggleMode() {
+			if (this.mode === 'block') return this.mode = 'list'
+                  if (this.mode === 'list') return this.mode = 'block'
 		}
 	}
 })
