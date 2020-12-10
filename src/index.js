@@ -99,7 +99,7 @@ document.addEventListener('included', function (){
 						var arr = []
 
 						for (var i = 0; i < list.length; i++) {
-							if (list[i].indexOf(keyWord) >= 0) {
+							if (list[i].name.indexOf(keyWord) >= 0) {
 								arr.push(list[i])
 							}
 						}
@@ -164,9 +164,11 @@ document.addEventListener('included', function (){
 			getLocalStorage: function (){
 				const page_size = localStorage.getItem('page_size')
 				const style = localStorage.getItem('style')
+                        const mode = localStorage.getItem('mode')
 
 				if (page_size) this.page_size = page_size
 				if (style) this.style = style
+				if (mode) this.mode = mode
 			},
 			onImgItem: function (e){
 				const type = e.target.dataset.type
@@ -200,7 +202,7 @@ document.addEventListener('included', function (){
 							'https://' +
 								location.host +
 								'/images/' +
-								this.current_data[index]
+								this.current_data[index].name
 						)
 						break
 					default:
@@ -288,6 +290,8 @@ document.addEventListener('included', function (){
 				this.search_text = ''
 			},
 			onToggleMode () {
+				localStorage.setItem('mode', this.mode === 'block' ? 'list' : 'block')
+
 				if (this.mode === 'block') return (this.mode = 'list')
 				if (this.mode === 'list') return (this.mode = 'block')
 			}

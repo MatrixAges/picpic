@@ -2,6 +2,66 @@
       width: 80vw;
       padding: 12vh 0;
 
+      &.list {
+            flex-direction: column;
+
+            .img_item_wrap {
+                  width: 100%;
+
+                  &:hover,
+                  &.mobile {
+                        .img_item {
+                              transform: scale(1.08);
+                        }
+
+                        .options {
+                              transform: translateY(100%);
+                        }
+                  }
+
+                  .img_item {
+                        height: calc(~'var(--size_img) * 0.72');
+                  }
+
+                  .detail_info {
+                        display: flex;
+                        top: 0;
+                        left: 0;
+                        width: 300px;
+                        height: 100%;
+                        padding: 15px;
+                        border-radius: 4px;
+                        background: linear-gradient(to left, transparent, rgba(0, 0, 0, 0.6));
+                        backdrop-filter: blur(9px);
+                        -webkit-backdrop-filter: blur(9px);
+                        color: white;
+                        cursor: pointer;
+
+                        .name {
+                              font-size: 27px;
+                              font-weight: bold;
+                        }
+
+                        .detail {
+                              .detail_item {
+                                    font-size: 13px;
+                                    margin-bottom: 4px;
+
+                                    &:last-child {
+                                          margin-bottom: 0;
+                                    }
+
+                                    .title {
+                                          width: 60px;
+                                    }
+
+                                    .value {}
+                              }
+                        }
+                  }
+            }
+      }
+
       .img_item_wrap {
             width: var(--size_img);
             height: auto;
@@ -39,6 +99,10 @@
                   color: white;
                   transition: all ease 0.3s;
                   transform: translateY(100%);
+            }
+
+            .detail_info {
+                  display: none;
             }
       }
 }

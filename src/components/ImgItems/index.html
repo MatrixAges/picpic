@@ -1,6 +1,6 @@
 <template id="img_items">
       <div
-            class="img_items border_box flex flex_wrap align_start"
+            :class="['img_items border_box flex flex_wrap align_start',mode==='list'?'list':'']"
             ref="img_items"
             v-if="current_data.length"
       >
@@ -12,7 +12,7 @@
             >
                   <button
                         class="img_item"
-                        :style="item | getStyles"
+                        :style="item.name | getStyles"
                         data-type="img"
                         :data-index="index"
                   >
@@ -21,7 +21,28 @@
                         class="options w_100 border_box flex justify_center align_center absolute bottom_0"
                         data-type="url"
                         :data-index="index"
-                  >{{item}}</span>
+                  >{{item.name}}</span>
+                  <div
+                        class="detail_info border_box flex_column justify_between absolute"
+                        data-type="url"
+                        :data-index="index"
+                  >
+                        <span class="name line_clamp_2">{{item.name.split('.')[0]}}</span>
+                        <div class="detail flex flex_column">
+                              <div class="detail_item flex align_center">
+                                    <span class="title">size:</span>
+                                    <span class="value size">{{item.size}}</span>
+                              </div>
+                              <div class="detail_item flex align_center">
+                                    <span class="title">weight:</span>
+                                    <span class="value weight">{{item.weight}}</span>
+                              </div>
+                              <div class="detail_item flex align_center">
+                                    <span class="title">format:</span>
+                                    <span class="value format">{{item.format}}</span>
+                              </div>
+                        </div>
+                  </div>
             </div>
             <a
                   class="DandM w_100 text_center"

@@ -6,10 +6,10 @@
                   v-if="current!==-1"
                   @click="onImgItem"
             >
-                  <div :class="'detail relative ' + style">
+                  <div :class="['detail relative',style]">
                         <div
                               class="img_item transition_normal"
-                              :style="current_data[current] | getStyles"
+                              :style="current_data[current].name | getStyles"
                         >
                               <button class="btn_close border_box flex justify_center align_center absolute">
                                     <svg
@@ -41,8 +41,8 @@
                               </div>
                               <a
                                     class="btn_download absolute border_box flex justify_center align_center transition_normal"
-                                    :href="'./'+current_data[current]"
-                                    :download="current_data[current]"
+                                    :href="'./'+current_data[current].name"
+                                    :download="current_data[current].name"
                                     @click.stop=""
                               >
                                     <svg

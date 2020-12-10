@@ -19,5 +19,8 @@
       "devDependencies": {
             "fs-extra": "^9.0.1",
             "globby": "^11.0.1"
+      },
+      "dependencies": {
+            "imageinfo": "^1.0.4"
       }
 }
