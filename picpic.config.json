@@ -1,0 +1,10 @@
+{
+      "types": [
+            "svg",
+            "png",
+            "jpg",
+            "jpeg",
+            "gif"
+      ],
+      "useFolder": false
+}

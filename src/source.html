@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+      <head>
+            <title>PicPic</title>
+      </head>
+
+      <script src='./libs/js/include.js'></script>
+
+      <link
+            rel="shortcut icon"
+            href="./favicon.ico"
+      >
+
+      <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=1"
+      >
+
+      <style></style>
+
+      <style>
+            @import './libs/css/atom.min.css';
+            @import './styles/init.css';
+            @import './styles/index.css';
+            @import './styles/mobile.css';
+      </style>
+
+      <body>
+            <div
+                  id="landing_wrap"
+                  class="landing_wrap w_100vw h_100vh border_box flex justify_center align_center fixed top_0 left_0 z_index_1000 bg_white transition_normal"
+            >
+                  <div class="landing fontsize_64">Loading</div>
+            </div>
+            <div
+                  id="app"
+                  style="opacity: 0;"
+            >
+                  <div class="header_wrap_placeholder w_100"></div>
+                  <x-header></x-header>
+                  <x-img-items></x-img-items>
+                  <x-empty></x-empty>
+                  <x-detail></x-detail>
+                  <x-pagination></x-pagination>
+                  <x-msg></x-msg>
+
+                  <template-slot></template-slot>
+            </div>
+      </body>
+
+      <script src='./libs/js/vue.min.js'></script>
+      <script src='./libs/js/lodash.min.js'></script>
+      <script src='./libs/js/clipboard.js'></script>
+      <script src='./index.js'></script>
+
+      <script id="component_scripts"></script>
+
+</html>

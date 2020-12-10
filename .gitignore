@@ -1,0 +1,26 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+#dev
+next-env.d.ts
+
+# testing
+/coverage
+
+# next.js
+/out/
+
+# production
+/dist
+/src/**/*.css
+
+# misc
+.DS_Store
+.env*
+
+# debug
+*-debug.log*
+*-error.log*
+*.zip
