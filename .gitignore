@@ -10,11 +10,11 @@ next-env.d.ts
 /coverage
 
 # next.js
-/.next/
 /out/
 
 # production
 /dist
+*.css
 
 # misc
 .DS_Store
