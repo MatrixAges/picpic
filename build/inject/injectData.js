@@ -7,13 +7,15 @@ const { types } = config
 
 module.exports = async str => {
 	const paths_types = types.reduce((total, item) => {
-		total.push(`assets/*.${item}`)
+		total.push(`assets/**/*.${item}`)
 
 		return total
 	}, [])
 
 	const paths_source_img = await globby(paths_types)
-	const paths_target_img = []
+      const paths_target_img = []
+
+      console.log(paths_source_img);
 
 	paths_source_img.map(item => {
 		const data = fs.readFileSync(item)
@@ -25,7 +27,7 @@ module.exports = async str => {
 			size: `${width}x${height}`,
 			format
 		})
-	})
+      })
 
 	return str.replace(
 		`
