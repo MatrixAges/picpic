@@ -31,7 +31,13 @@
                   id="landing_wrap"
                   class="landing_wrap w_100vw h_100vh border_box flex justify_center align_center fixed top_0 left_0 z_index_1000 bg_white transition_normal"
             >
-                  <div class="landing fontsize_64">Loading</div>
+                  <div class="landing flex flex_column align_center">
+                        <img
+                              class="logo_landing"
+                              src="./images/logo_picpic_black.png"
+                              alt="logo_picpic_black"
+                        >
+                  </div>
             </div>
             <div
                   id="app"
@@ -44,6 +50,7 @@
                   <x-detail></x-detail>
                   <x-pagination></x-pagination>
                   <x-msg></x-msg>
+                  <x-folder-select></x-folder-select>
 
                   <template-slot></template-slot>
             </div>

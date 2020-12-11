@@ -6,6 +6,9 @@
 .landing_wrap {
   opacity: 1;
 }
+.landing_wrap .landing .logo_landing {
+  max-width: 18vw;
+}
 .DandM {
   color: #ddd;
   font-size: 14px;
