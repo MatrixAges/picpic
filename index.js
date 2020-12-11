@@ -164,7 +164,7 @@ document.addEventListener('included', function (){
 			getLocalStorage: function (){
 				const page_size = localStorage.getItem('page_size')
 				const style = localStorage.getItem('style')
-                        const mode = localStorage.getItem('mode')
+				const mode = localStorage.getItem('mode')
 
 				if (page_size) this.page_size = page_size
 				if (style) this.style = style
@@ -172,8 +172,8 @@ document.addEventListener('included', function (){
 			},
 			onImgItem: function (e){
 				const type = e.target.dataset.type
-				const index = Number(e.target.dataset.index)
-
+                        const index = Number(e.target.dataset.index)
+                        
 				if (!type) {
 					this.current = -1
 					this.autoplay = false
