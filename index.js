@@ -157,7 +157,7 @@ document.addEventListener('included', function (){
 					app.style.opacity = 1
 				}, 300)
 			},
-			setChunkData: function (){
+                  setChunkData: function () {
 				this.chunk_data = _.chunk(this.img_paths, this.page_size)
 				this.current_data = this.chunk_data[this.page - 1]
 			},
@@ -172,8 +172,8 @@ document.addEventListener('included', function (){
 			},
 			onImgItem: function (e){
 				const type = e.target.dataset.type
-                        const index = Number(e.target.dataset.index)
-                        
+				const index = Number(e.target.dataset.index)
+
 				if (!type) {
 					this.current = -1
 					this.autoplay = false
@@ -289,6 +289,7 @@ document.addEventListener('included', function (){
 				this.visible_search = !this.visible_search
 				this.search_text = ''
 			},
+			onToggleFolder () {},
 			onToggleMode () {
 				localStorage.setItem('mode', this.mode === 'block' ? 'list' : 'block')
 
