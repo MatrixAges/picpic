@@ -1,0 +1,8 @@
+.empty_wrap {
+  width: 100%;
+  height: calc(100vh - 75px - 72px);
+  opacity: 0.15;
+}
+.empty_wrap span {
+  margin-top: 12px;
+}
