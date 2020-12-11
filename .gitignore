@@ -14,7 +14,6 @@ next-env.d.ts
 
 # production
 /dist
-/src/**/*.css
 
 # misc
 .DS_Store
