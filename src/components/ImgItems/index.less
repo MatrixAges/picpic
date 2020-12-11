@@ -7,6 +7,9 @@
 
             .img_item_wrap {
                   width: 100%;
+                  margin-bottom: 24px;
+                  border-radius: 18px;
+                  overflow: hidden;
 
                   &:hover,
                   &.mobile {
@@ -20,7 +23,7 @@
                   }
 
                   .img_item {
-                        height: calc(~'var(--size_img) * 0.72');
+                        height: 27vh;
                   }
 
                   .detail_info {
@@ -32,30 +35,29 @@
                         padding: 15px;
                         border-radius: 4px;
                         background: linear-gradient(to left, transparent, rgba(0, 0, 0, 0.6));
-                        backdrop-filter: blur(9px);
-                        -webkit-backdrop-filter: blur(9px);
+                        backdrop-filter: blur(15px);
+                        -webkit-backdrop-filter: blur(15px);
                         color: white;
                         cursor: pointer;
+                        border-radius: 18px;
 
                         .name {
-                              font-size: 27px;
+                              font-size: 36px;
                               font-weight: bold;
                         }
 
                         .detail {
                               .detail_item {
-                                    font-size: 13px;
-                                    margin-bottom: 4px;
+                                    font-size: 15px;
+                                    margin-bottom: 9px;
 
                                     &:last-child {
                                           margin-bottom: 0;
                                     }
 
                                     .title {
-                                          width: 60px;
+                                          width: 64px;
                                     }
-
-                                    .value {}
                               }
                         }
                   }

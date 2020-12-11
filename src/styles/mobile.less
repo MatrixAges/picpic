@@ -26,6 +26,17 @@
 
 @media screen and (max-width:1000px) {
       .img_items {
+            &.list {
+                  .img_item_wrap {
+                        margin-bottom: 0;
+                        border-radius: 0;
+
+                        .detail_info {
+                              border-radius: 0;
+                        }
+                  }
+            }
+
             .img_item_wrap {
                   width: calc(80vw / 3);
 
@@ -35,6 +46,19 @@
             }
       }
 
+      .header_wrap {
+            .header {
+                  .search_wrap {
+                        left: calc(50% - 12vw);
+
+                        .search {
+                              .input {
+                                    width: 24vw;
+                              }
+                        }
+                  }
+            }
+      }
 }
 
 @media screen and (max-width:800px) {
@@ -50,19 +74,11 @@
                   padding: 0 24px;
 
                   .right_wrap {
-
-                        .options,
-                        .d_line {
-                              display: none;
+                        .options {
+                              .btn_search {
+                                    display: none;
+                              }
                         }
-                  }
-            }
-      }
-
-      .search_wrap {
-            .search {
-                  .input {
-                        width: 72vw;
                   }
             }
       }
@@ -70,6 +86,33 @@
       .img_items {
             width: 100vw;
             padding-top: 0;
+
+            &.list {
+                  .img_item_wrap {
+                        .img_item {
+                              height: 20vh;
+                        }
+
+                        .detail_info {
+                              width: 36vw;
+
+                              .name {
+                                    font-size: 15px;
+                              }
+
+                              .detail {
+                                    .detail_item {
+                                          font-size: 12px;
+                                          margin-bottom: 4px;
+
+                                          .title {
+                                                width: 48px;
+                                          }
+                                    }
+                              }
+                        }
+                  }
+            }
 
             .img_item_wrap {
                   width: calc(100vw / 2);
@@ -147,6 +190,20 @@
 }
 
 @media screen and (max-width:376px) {
+      .img_items {
+            &.list {
+                  .img_item_wrap {
+                        .img_item {
+                              height: 24vh;
+                        }
+
+                        .detail_info {
+                              width: 45vw;
+                        }
+                  }
+            }
+      }
+
       .detail_wrap {
             .detail {
                   .img_item {
@@ -160,6 +217,17 @@
 
 
 @media screen and (max-width:321px) {
+      .img_items {
+            &.list {
+                  .img_item_wrap {
+                        .img_item {
+                              height: 27vh;
+                        }
+                  }
+            }
+      }
+
+
       .pagination_wrap {
             .pagination {
                   #input_page {
