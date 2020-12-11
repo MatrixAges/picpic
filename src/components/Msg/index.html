@@ -1,0 +1,10 @@
+<template id="msg">
+      <transition name="fade">
+            <div
+                  class="msg_wrap fixed flex justify_center align_center"
+                  v-if="visible_msg"
+            >
+                  <span class="msg">{{msg}}</span>
+            </div>
+      </transition>
+</template>
