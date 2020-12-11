@@ -1,0 +1,90 @@
+.img_items {
+  width: 80vw;
+  padding: 12vh 0;
+}
+.img_items.list {
+  flex-direction: column;
+}
+.img_items.list .img_item_wrap {
+  width: 100%;
+  margin-bottom: 24px;
+  border-radius: 18px;
+  overflow: hidden;
+}
+.img_items.list .img_item_wrap:hover .img_item,
+.img_items.list .img_item_wrap.mobile .img_item {
+  transform: scale(1.08);
+}
+.img_items.list .img_item_wrap:hover .options,
+.img_items.list .img_item_wrap.mobile .options {
+  transform: translateY(100%);
+}
+.img_items.list .img_item_wrap .img_item {
+  height: 27vh;
+}
+.img_items.list .img_item_wrap .detail_info {
+  display: flex;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100%;
+  padding: 15px;
+  border-radius: 4px;
+  background: linear-gradient(to left, transparent, rgba(0, 0, 0, 0.6));
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  color: white;
+  cursor: pointer;
+  border-radius: 18px;
+}
+.img_items.list .img_item_wrap .detail_info .name {
+  font-size: 36px;
+  font-weight: bold;
+}
+.img_items.list .img_item_wrap .detail_info .detail .detail_item {
+  font-size: 15px;
+  margin-bottom: 9px;
+}
+.img_items.list .img_item_wrap .detail_info .detail .detail_item:last-child {
+  margin-bottom: 0;
+}
+.img_items.list .img_item_wrap .detail_info .detail .detail_item .title {
+  width: 64px;
+}
+.img_items .img_item_wrap {
+  width: var(--size_img);
+  height: auto;
+  box-sizing: border-box;
+  overflow: hidden;
+  transition: all ease 0.3s;
+  background: linear-gradient(-30deg, black, whitesmoke);
+}
+.img_items .img_item_wrap:hover .options,
+.img_items .img_item_wrap.mobile .options {
+  transform: translateY(0);
+}
+.img_items .img_item_wrap .img_item {
+  width: 100%;
+  height: var(--size_img);
+  box-sizing: border-box;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all ease 0.3s;
+}
+.img_items .img_item_wrap .options {
+  width: 100%;
+  height: 36px;
+  white-space: pre-wrap;
+  font-size: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  color: white;
+  transition: all ease 0.3s;
+  transform: translateY(100%);
+}
+.img_items .img_item_wrap .detail_info {
+  display: none;
+}
