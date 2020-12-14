@@ -94,7 +94,7 @@
   padding: 0 27px;
   font-size: 13px;
   color: #888;
-  border-bottom: 1px solid rgba(241, 241, 241, 0.1);
+  border-bottom: 1px solid rgba(241, 241, 241, 0.05);
 }
 .folder_select_wrap .folder_select .content_wrap {
   height: calc(100vh - 103px);
