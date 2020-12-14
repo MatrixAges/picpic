@@ -8,11 +8,17 @@ document.addEventListener('included', function (){
 			page: 1,
 			page_size: 10,
 			array_page_size: [ 10, 20, 40, 80, 99999999 ],
+			select_folder: [],
+			current_folder: {},
+			folder_prev: '',
+			folder_use: 'assets',
+			img_data: [],
 			chunk_data: [],
 			current_data: [],
 			visible_nav: true,
 			visible_msg: false,
 			visible_search: false,
+			visible_folder_select: false,
 			timer_msg: 0,
 			msg: '',
 			search_text: '',
@@ -78,7 +84,7 @@ document.addEventListener('included', function (){
 				this.current_data = this.chunk_data[new_val - 1]
 			},
 			page_size: function (new_val){
-				this.chunk_data = _.chunk(this.img_paths, new_val)
+				this.chunk_data = _.chunk(this.img_data, new_val)
 				this.current_data = this.chunk_data[0]
 				this.page = 1
 
@@ -88,7 +94,7 @@ document.addEventListener('included', function (){
 				function (new_val){
 					if (!new_val) {
 						this.visible_nav = true
-						this.chunk_data = _.chunk(this.img_paths, this.page_size)
+						this.chunk_data = _.chunk(this.img_data, this.page_size)
 						this.current_data = this.chunk_data[this.page - 1]
 						return
 					}
@@ -107,11 +113,17 @@ document.addEventListener('included', function (){
 						return arr
 					}
 
-					this.current_data = fuzzyQuery(this.img_paths, new_val)
+					this.current_data = fuzzyQuery(this.img_data, new_val)
 				},
 				360,
 				{ leading: false }
-			)
+			),
+			current_folder: function (new_val){
+				const current = new_val.name
+				const index = this.select_folder.findIndex(item => item === current)
+
+				this.folder_prev = this.select_folder[index - 1]
+			}
 		},
 		mounted: function (){
 			this.getDeviceInfo()
@@ -157,8 +169,27 @@ document.addEventListener('included', function (){
 					app.style.opacity = 1
 				}, 300)
 			},
-                  setChunkData: function () {
-				this.chunk_data = _.chunk(this.img_paths, this.page_size)
+			getImgs: function (children, arr){
+				children.map(item => {
+					if (item.type === 'file') {
+						arr.push(item)
+					} else {
+						if (item.children) {
+							this.getImgs(item.children, arr)
+						}
+					}
+				})
+			},
+			setChunkData: function (){
+				this.select_folder = [ 'assets' ]
+				this.current_folder = this.img_paths
+
+				const arr = []
+
+				this.getImgs(this.img_paths.children, arr)
+
+				this.img_data = arr
+				this.chunk_data = _.chunk(this.img_data, this.page_size)
 				this.current_data = this.chunk_data[this.page - 1]
 			},
 			getLocalStorage: function (){
@@ -171,7 +202,9 @@ document.addEventListener('included', function (){
 				if (mode) this.mode = mode
 			},
 			onImgItem: function (e){
+				const _that = this
 				const type = e.target.dataset.type
+				const path = e.target.dataset.path
 				const index = Number(e.target.dataset.index)
 
 				if (!type) {
@@ -183,27 +216,37 @@ document.addEventListener('included', function (){
 					return
 				}
 
+				function showMsg (){
+					_that.msg = 'link has copy to clipboard'
+					_that.visible_msg = true
+
+					clearTimeout(_that.timer_msg)
+
+					_that.timer_msg = setTimeout(() => {
+						_that.visible_msg = false
+					}, 1200)
+				}
+
 				switch (type) {
 					case 'img':
 						this.current = index
 
 						break
 					case 'url':
-						this.msg = 'link has copy to clipboard'
-						this.visible_msg = true
-
-						clearTimeout(this.timer_msg)
-
-						this.timer_msg = setTimeout(() => {
-							this.visible_msg = false
-						}, 1200)
+						showMsg()
 
 						clipboardCopy(
 							'https://' +
 								location.host +
 								'/images/' +
-								this.current_data[index].name
+								this.current_data[index].path
 						)
+						break
+					case 'path':
+						showMsg()
+
+						clipboardCopy('https://' + location.host + '/images/' + path)
+
 						break
 					default:
 						break
@@ -285,16 +328,82 @@ document.addEventListener('included', function (){
 
 				this.page = value
 			},
-			onToggleSearch () {
+			onToggleSearch: function (){
 				this.visible_search = !this.visible_search
 				this.search_text = ''
 			},
-			onToggleFolder () {},
-			onToggleMode () {
+			onToggleFolder: function (){
+				this.visible_folder_select = !this.visible_folder_select
+			},
+			onToggleMode: function (){
 				localStorage.setItem('mode', this.mode === 'block' ? 'list' : 'block')
 
 				if (this.mode === 'block') return (this.mode = 'list')
 				if (this.mode === 'list') return (this.mode = 'block')
+			},
+			onFolder: function (e){
+				const name = e.target.dataset.name
+				const item = this.current_folder.children.find(item => item.name === name)
+
+				this.select_folder.push(name)
+				this.current_folder = item
+			},
+			onPrevFolder: function (){
+				const _that = this
+				const folder_prev = _that.folder_prev
+
+				_that.select_folder.pop()
+
+				function findPrev (children, item){
+					const target = children.find(it => {
+						if (it.type === 'directory') {
+							return it.name === item
+						}
+					})
+
+					if (target.name === folder_prev) {
+						_that.current_folder = target
+
+						return true
+					} else {
+						findPrev(target.children)
+					}
+				}
+
+				if (_that.folder_prev === 'assets') {
+					_that.current_folder = _that.img_paths
+				} else {
+					for (const i in _that.select_folder) {
+						if (Number(i) !== 0) {
+							const target = findPrev(
+								_that.img_paths.children,
+								_that.select_folder[i]
+							)
+
+							if (target) return
+						}
+					}
+				}
+			},
+			toggleFolderUse: function (){
+				let source_data
+				const arr = []
+
+				if (this.folder_use === this.current_folder.name) {
+					source_data = this.img_paths.children
+
+					this.folder_use = 'assets'
+				} else {
+					source_data = this.current_folder.children
+
+					this.folder_use = this.current_folder.name
+				}
+
+				this.getImgs(source_data, arr)
+
+				this.img_data = arr
+				this.chunk_data = _.chunk(this.img_data, this.page_size)
+				this.current_data = this.chunk_data[this.page - 1]
 			}
 		}
 	})

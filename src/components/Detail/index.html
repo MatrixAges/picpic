@@ -9,7 +9,7 @@
                   <div :class="['detail relative',style]">
                         <div
                               class="img_item transition_normal"
-                              :style="current_data[current].name | getStyles"
+                              :style="current_data[current].path | getStyles"
                         >
                               <button class="btn_close border_box flex justify_center align_center absolute">
                                     <svg
@@ -41,7 +41,7 @@
                               </div>
                               <a
                                     class="btn_download absolute border_box flex justify_center align_center transition_normal"
-                                    :href="'./'+current_data[current].name"
+                                    :href="'./'+current_data[current].path"
                                     :download="current_data[current].name"
                                     @click.stop=""
                               >

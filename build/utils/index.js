@@ -37,16 +37,22 @@ async function getFileTree (){
 
 		if (items.children) {
 			items.children.map(item => {
+				let path
+
 				if (item.type !== 'directory') {
 					const array_path_source = item.relativePath.split('/')
 					const start_index = array_path_source.findIndex(i => i === 'assets')
 					const array_path_target = array_path_source.slice(start_index - 2)
+
+					path = `${array_path_target.join('/')}`
 
 					getImgDetail(`assets/${array_path_target.join('/')}`, item)
 				}
 				removeUseless(item)
 
 				handleObject(item)
+
+				item.path = path
 			})
 		}
 	}
