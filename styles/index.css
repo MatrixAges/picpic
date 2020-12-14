@@ -2,6 +2,7 @@
   --size_img: 16vw;
   --size_detail: 50vw;
   --color_bg: #f8f9fd;
+  --color_border: #eee;
 }
 .landing_wrap {
   opacity: 1;
