@@ -41,60 +41,21 @@ document.addEventListener('included', function (){
 			}
 		},
 		watch: {
-			current: function (new_val){
-				this.$nextTick(() => {
-					const detail_wrap = document.querySelector('#detail_wrap')
-
-					if (new_val !== -1) {
-						detail_wrap.addEventListener(
-							'mousewheel',
-							function (e){
-								e.preventDefault()
-							},
-							false
-						)
-
-						detail_wrap.addEventListener(
-							'touchmove',
-							function (e){
-								e.preventDefault()
-							},
-							false
-						)
-					} else {
-						detail_wrap.removeEventListener(
-							'mousewheel',
-							function (e){
-								e.preventDefault()
-							},
-							false
-						)
-
-						detail_wrap.removeEventListener(
-							'touchmove',
-							function (e){
-								e.preventDefault()
-							},
-							false
-						)
-					}
-				})
-			},
 			page: function (new_val){
 				this.current_data = this.chunk_data[new_val - 1]
 			},
 			page_size: function (new_val){
-				this.chunk_data = _.chunk(this.img_data, new_val)
+				this.chunk_data = lodash_chunk(this.img_data, new_val)
 				this.current_data = this.chunk_data[0]
 				this.page = 1
 
 				localStorage.setItem('page_size', Number(new_val))
 			},
-			search_text: _.throttle(
+			search_text: lodash_throttle(
 				function (new_val){
 					if (!new_val) {
 						this.visible_nav = true
-						this.chunk_data = _.chunk(this.img_data, this.page_size)
+						this.chunk_data = lodash_chunk(this.img_data, this.page_size)
 						this.current_data = this.chunk_data[this.page - 1]
 						return
 					}
@@ -137,14 +98,17 @@ document.addEventListener('included', function (){
 			document.removeEventListener('scroll', this.handleScroll)
 		},
 		methods: {
-			getDeviceInfo () {
+			preventScroll (event) {
+				event.preventDefault()
+			},
+			getDeviceInfo: function (){
 				if (document.body.offsetWidth <= 800) {
 					this.is_mobile = true
 				} else {
 					this.is_mobile = false
 				}
 			},
-			handleScroll () {
+			handleScroll: function (){
 				const scrollTop =
 					window.pageYOffset ||
 					document.documentElement.scrollTop ||
@@ -189,7 +153,7 @@ document.addEventListener('included', function (){
 				this.getImgs(this.img_paths.children, arr)
 
 				this.img_data = arr
-				this.chunk_data = _.chunk(this.img_data, this.page_size)
+				this.chunk_data = lodash_chunk(this.img_data, this.page_size)
 				this.current_data = this.chunk_data[this.page - 1]
 			},
 			getLocalStorage: function (){
@@ -402,7 +366,7 @@ document.addEventListener('included', function (){
 				this.getImgs(source_data, arr)
 
 				this.img_data = arr
-				this.chunk_data = _.chunk(this.img_data, this.page_size)
+				this.chunk_data = lodash_chunk(this.img_data, this.page_size)
 				this.current_data = this.chunk_data[this.page - 1]
 			}
 		}

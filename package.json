@@ -1,5 +1,5 @@
 {
-      "name": "images",
+      "name": "@matrixage/picpic",
       "version": "1.0.0",
       "description": "",
       "main": "build/index.js",
@@ -10,7 +10,7 @@
             "type": "git",
             "url": "git+https://github.com/MatrixAge/images.git"
       },
-      "author": "",
+      "author": "matrixage",
       "license": "MIT",
       "bugs": {
             "url": "https://github.com/MatrixAge/images/issues"
@@ -19,9 +19,11 @@
       "devDependencies": {
             "dree": "^2.5.0",
             "fs-extra": "^9.0.1",
-            "globby": "^11.0.1"
-      },
-      "dependencies": {
+            "globby": "^11.0.1",
             "imageinfo": "^1.0.4"
+      },
+      "dependencies": {},
+      "bin": {
+            "picpic": "./bin/index.js"
       }
 }

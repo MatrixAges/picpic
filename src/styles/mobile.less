@@ -1,3 +1,37 @@
+@media screen and (max-width:1400px) {
+      .folder_select_wrap {
+            @width: 36vw;
+
+            .folder_select {
+                  width: @width;
+
+                  .content_wrap {
+                        .content {
+                              .content_item {
+                                    width: calc((@width - 24px) / 4);
+
+                                    .icon_folder {
+                                          height: calc((@width - 24px) / 4 - 30px);
+
+                                          .children {
+                                                bottom: 27px;
+                                          }
+
+                                          .size {
+                                                bottom: 12px;
+                                          }
+                                    }
+
+                                    .img_item {
+                                          height: calc((@width - 24px) / 4 - 27px);
+                                    }
+                              }
+                        }
+                  }
+            }
+      }
+}
+
 @media screen and (max-width:1200px) {
       .img_items {
             .img_item_wrap {
@@ -19,6 +53,29 @@
 
                   .img_item {
                         height: calc(100vw / 1.5);
+                  }
+            }
+      }
+
+      .folder_select_wrap {
+            .folder_select {
+                  .content_wrap {
+                        .content {
+                              .content_item {
+
+                                    .icon_folder {
+                                          font-size: 10px;
+
+                                          .children {
+                                                bottom: 22px;
+                                          }
+
+                                          .size {
+                                                bottom: 9px;
+                                          }
+                                    }
+                              }
+                        }
                   }
             }
       }
@@ -54,6 +111,39 @@
                         .search {
                               .input {
                                     width: 24vw;
+                              }
+                        }
+                  }
+            }
+      }
+
+      .folder_select_wrap {
+            @width: 45vw;
+
+            .folder_select {
+                  width: @width;
+
+                  .content_wrap {
+                        .content {
+                              .content_item {
+                                    width: calc((@width - 24px) / 4);
+
+                                    .icon_folder {
+                                          height: calc((@width - 24px) / 4 - 30px);
+                                          font-size: 8px;
+
+                                          .children {
+                                                display: none;
+                                          }
+
+                                          .size {
+                                                bottom: 9px;
+                                          }
+                                    }
+
+                                    .img_item {
+                                          height: calc((@width - 24px) / 4 - 27px);
+                                    }
                               }
                         }
                   }
@@ -186,6 +276,52 @@
             -webkit-backdrop-filter: blur(9px);
             color: white;
             font-size: 12px;
+      }
+
+      .folder_select_wrap {
+            @width: 100vw;
+
+            .folder_select {
+                  width: @width;
+
+                  .content_wrap {
+                        .content {
+                              .content_item {
+                                    width: calc((@width - 24px) / 4);
+
+                                    .icon_folder {
+                                          height: calc((@width - 24px) / 4 - 30px);
+
+                                          .size{
+                                                display: none;
+                                          }
+                                    }
+
+                                    .img_item {
+                                          height: calc((@width - 24px) / 4 - 27px);
+                                    }
+                              }
+                        }
+                  }
+            }
+      }
+}
+
+@media screen and (max-width:415px) {
+      .folder_select_wrap {
+            .folder_select {
+                  .content_wrap {
+                        .content {
+                              .content_item {
+                                    .icon_folder {
+                                          .size {
+                                                display: inline-block;
+                                          }
+                                    }
+                              }
+                        }
+                  }
+            }
       }
 }
 
