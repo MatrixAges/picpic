@@ -8,14 +8,14 @@
       },
       "repository": {
             "type": "git",
-            "url": "git+https://github.com/MatrixAge/images.git"
+            "url": "git+https://github.com/MatrixAges/picpic.git"
       },
       "author": "matrixage",
       "license": "MIT",
       "bugs": {
-            "url": "https://github.com/MatrixAge/images/issues"
+            "url": "https://github.com/MatrixAges/picpic/issues"
       },
-      "homepage": "https://github.com/MatrixAge/images#readme",
+      "homepage": "https://github.com/MatrixAges/picpic#readme",
       "devDependencies": {
             "dree": "^2.5.0",
             "fs-extra": "^9.0.1",
