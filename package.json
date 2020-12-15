@@ -1,10 +1,26 @@
 {
       "name": "@matrixage/picpic",
-      "version": "1.0.0",
-      "description": "",
-      "main": "build/index.js",
+      "version": "1.1.2",
+      "description": "A awesome image bed by github pages.",
+      "keywords": [
+            "picpic",
+            "image",
+            "img",
+            "markdown",
+            "md",
+            "bed",
+            "pic",
+            "nodejs",
+            "vue",
+            "js",
+            "github-gh",
+            "github-pages",
+            "github",
+            "pages"
+      ],
       "scripts": {
-            "build": "node build/index.js"
+            "init": "picpic init",
+            "build": "picpic build"
       },
       "repository": {
             "type": "git",
@@ -16,13 +32,12 @@
             "url": "https://github.com/MatrixAges/picpic/issues"
       },
       "homepage": "https://github.com/MatrixAges/picpic#readme",
-      "devDependencies": {
+      "dependencies": {
             "dree": "^2.5.0",
             "fs-extra": "^9.0.1",
             "globby": "^11.0.1",
             "imageinfo": "^1.0.4"
       },
-      "dependencies": {},
       "bin": {
             "picpic": "./bin/index.js"
       }
