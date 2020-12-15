@@ -10,6 +10,7 @@
   background: rgba(248, 249, 253, 0.6);
   overflow-x: hidden;
   overflow-y: scroll;
+  overscroll-behavior: contain;
 }
 .folder_select_wrap .folder_select .btn_close {
   top: 26px;
@@ -89,13 +90,6 @@
   height: 100%;
   font-size: 10px;
 }
-.folder_select_wrap .folder_select .nav_info_wrap {
-  height: 30px;
-  padding: 0 27px;
-  font-size: 13px;
-  color: #888;
-  border-bottom: 1px solid rgba(241, 241, 241, 0.05);
-}
 .folder_select_wrap .folder_select .content_wrap {
   height: calc(100vh - 103px);
   overflow-y: scroll;
@@ -135,16 +129,34 @@
   background: linear-gradient(-30deg, purple, orange);
   mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%20width=%2260%22%20height=%2260%22%3E%3Cpath%20d='M496%20152a56%2056%200%2000-56-56H220.11a23.89%2023.89%200%2001-13.31-4L179%2073.41A55.77%2055.77%200%2000147.89%2064H72a56%2056%200%2000-56%2056v48a8%208%200%20008%208h464a8%208%200%20008-8zM16%20392a56%2056%200%200056%2056h368a56%2056%200%200056-56V216a8%208%200%2000-8-8H24a8%208%200%2000-8%208z'/%3E%3C/svg%3E");
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%20width=%2260%22%20height=%2260%22%3E%3Cpath%20d='M496%20152a56%2056%200%2000-56-56H220.11a23.89%2023.89%200%2001-13.31-4L179%2073.41A55.77%2055.77%200%2000147.89%2064H72a56%2056%200%2000-56%2056v48a8%208%200%20008%208h464a8%208%200%20008-8zM16%20392a56%2056%200%200056%2056h368a56%2056%200%200056-56V216a8%208%200%2000-8-8H24a8%208%200%2000-8%208z'/%3E%3C/svg%3E");
+  color: rgba(255, 255, 255, 0.5);
+  font-style: initial;
+  font-size: 12px;
+}
+.folder_select_wrap .folder_select .content_wrap .content .content_item .icon_folder .children {
+  right: 8px;
+  bottom: 27px;
+}
+.folder_select_wrap .folder_select .content_wrap .content .content_item .icon_folder .size {
+  right: 8px;
+  bottom: 12px;
 }
 .folder_select_wrap .folder_select .content_wrap .content .content_item .img_item {
   width: 100%;
   height: calc((30vw - 24px) / 4 - 27px);
   margin-bottom: 6px;
-  border-radius: 24px;
+  border-radius: 6px;
 }
 .folder_select_wrap .folder_select .content_wrap .content .content_item .name {
   width: 100%;
   font-size: 13px;
   text-align: center;
   word-break: break-all;
+}
+.folder_select_wrap .folder_select .nav_info_wrap {
+  height: 30px;
+  padding: 0 27px;
+  font-size: 13px;
+  color: #888;
+  border-top: 1px solid rgba(241, 241, 241, 0.08);
 }

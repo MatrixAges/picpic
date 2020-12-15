@@ -1,6 +1,7 @@
 <template id="folder_select">
       <transition name="fade">
             <div
+                  id="folder_select_wrap"
                   class="folder_select_wrap flex justify_end align_center fixed w_100vw h_100vh top_0 z_index_1000"
                   @click="onToggleFolder"
                   v-if="visible_folder_select"
@@ -63,9 +64,6 @@
                                     </div>
                               </div>
                         </div>
-                        <div class="nav_info_wrap w_100 border_box flex align_center">
-                              <span class="nav_info line_clamp_1">{{select_folder.join(' > ')}}</span>
-                        </div>
                         <div class="content_wrap w_100 border_box">
                               <div class="content w_100 border_box flex flex_wrap align_start">
                                     <button
@@ -75,10 +73,19 @@
                                           v-if="item.type==='directory'"
                                     >
                                           <i
-                                                class="icon_folder"
+                                                class="icon_folder relative"
                                                 :data-name="item.name"
-                                                @click="onFolder"
-                                          ></i>
+                                                @click.capture="onFolder"
+                                          >
+                                                <span
+                                                      class="children absolute"
+                                                      :data-name="item.name"
+                                                >{{item.children.length}} files</span>
+                                                <span
+                                                      class="size absolute"
+                                                      :data-name="item.name"
+                                                >{{item.size}}</span>
+                                          </i>
                                           <span class="name line_clamp_2">{{item.name}}</span>
                                     </button>
                                     <button
@@ -103,6 +110,10 @@
                                           >{{item.name.split('.')[0]}}</span>
                                     </button>
                               </div>
+                        </div>
+                        <div class="nav_info_wrap w_100 border_box flex flex_wrap justify_between align_center">
+                              <span class="nav_info line_clamp_1">{{select_folder.join(' > ')}}</span>
+                              <span class="folder_use">using: {{folder_use}}</span>
                         </div>
                   </div>
             </div>
