@@ -15,17 +15,26 @@ const main = () => {
 			pkg['scripts']['build'] = 'picpic build'
 
 			fs.writeFileSync('./package.json', JSON.stringify(pkg, null, 2).concat('\n'))
-			fs.mkdirSync(`${root}/.github`)
+			if (!fs.existsSync(`${root}/assets`)) fs.mkdirSync(`${root}/assets`)
+			if (!fs.existsSync(`${root}/.github`)) fs.mkdirSync(`${root}/.github`)
 			fs.copySync(getPath('../.github'), `${root}/.github`)
 
-			console.log('picpic init success! \n')
+			console.log('---------- picpic init success! ---------- \n')
 			break
 		case 'build':
-			child_process.execSync(`node ../build/index.js`)
+			child_process.execSync(`node ${getPath('../build/index.js')}`)
 			break
 		default:
 			break
 	}
 }
 
-main()
+try {
+	main()
+
+	process.exit(0)
+} catch (e) {
+	console.error(e)
+
+	process.exit(1)
+}
