@@ -14,7 +14,7 @@ _<p align="center">A awesome image bed by github pages and github actions.</p>_
 
 ## Doc
 
-[EN](https://github.com/MatrixAges/picpic) | [中文文档](https://github.com/MatrixAges/picpic/blob/master/readme_cn.md)
+[EN](https://github.com/MatrixAges/picpic#readme) | [中文文档](https://github.com/MatrixAges/picpic/blob/master/readme_cn.md)
 
 ## Installation
 
@@ -66,6 +66,11 @@ also, more you can explore:
 - minim file system
 
 if you have more demands, and if you think your demands reasonal, you can talk to me.
+
+## Dev route
+
+- support picpic.config.json
+- support imagemin
 
 ## Accessibility
 

@@ -1,6 +1,6 @@
 {
       "name": "@matrixage/picpic",
-      "version": "1.3.0",
+      "version": "1.3.1",
       "description": "A awesome image bed by github pages and github actions.",
       "keywords": [
             "picpic",
@@ -33,6 +33,7 @@
       },
       "homepage": "https://github.com/MatrixAges/picpic#readme",
       "dependencies": {
+            "@matrixage/atom.css": "^2.0.1",
             "dree": "^2.5.0",
             "fs-extra": "^9.0.1",
             "globby": "^11.0.1",

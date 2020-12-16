@@ -83,6 +83,11 @@ github actions 检测到项目中 .github 文件夹下的部署脚本之后，�
 
 如果你有自己的需求，而且你认为你的需求合理的话，可以通过issue或者discussion提给我，如果确实有价值，我会实现，当然，你也可以自行实现。
 
+## 开发路线图
+
+- 支持 picpic.config.json
+- 支持 imagemin
+
 ## Accessibility
 
 Picpic支持所有现代浏览器，建议使用chrome或是firefox进行访问。
