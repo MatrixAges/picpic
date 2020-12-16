@@ -42,6 +42,8 @@ then active your gh-pages:
 
 if your acccout do not active github actions, you should active github actions and git push again to trigger delopy process.
 
+if your github repo first branch is master,please change the branch in .github/workflows/ci.yml (main => master)
+
 ## Preview
 
 ![picpic_example](https://matrixage.github.io/img/projects/picpic/picpic_example.jpg)
@@ -53,9 +55,6 @@ click image to preview detail:
 
 click top-right icon folder to preview images in mode[folder]:
 ![picpic_ex_folder](https://matrixage.github.io/img/projects/picpic/picpic_ex_folder.jpg)
-
-hover and click image name to copy image link:
-![hover_status](https://matrixage.github.io/img/projects/picpic/hover_status.jpg)
 
 mobile is avaible when you visit site use mobile:
 ![preview_mobile](https://matrixage.github.io/img/projects/picpic/preview_mobile.jpg)

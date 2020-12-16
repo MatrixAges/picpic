@@ -57,6 +57,8 @@ github actions 检测到项目中 .github 文件夹下的部署脚本之后，�
 140.82.112.3 github.com
 ```
 
+如果你的仓库的主分支是master而不是main，请自行修改构建脚本依赖分支为master，在.github/workflows/ci.yml中。
+
 ## 预览
 
 ![picpic_example](https://matrixage.github.io/img/projects/picpic/picpic_example.jpg)
@@ -68,9 +70,6 @@ github actions 检测到项目中 .github 文件夹下的部署脚本之后，�
 
 点击右上角的文件夹图标可以进入文件夹模式:
 ![picpic_ex_folder](https://matrixage.github.io/img/projects/picpic/picpic_ex_folder.jpg)
-
-把鼠标悬浮在图片上面，点击图片名称复制图片链接:
-![hover_status](https://matrixage.github.io/img/projects/picpic/hover_status.jpg)
 
 在移动端同样是可以使用的:
 ![preview_mobile](https://matrixage.github.io/img/projects/picpic/preview_mobile.jpg)
