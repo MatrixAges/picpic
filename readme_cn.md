@@ -44,6 +44,19 @@ github actions 检测到项目中 .github 文件夹下的部署脚本之后，�
 
 如果你没有使用过 github actions ，你需要激活你的 github actions 功能，然后才能通过部署脚本触发自动构建流程.
 
+如果你发现生成的图片链接可以访问，但是放在github的readme.md中无法显示，那最有可能是 `githubusercontent.com` 被本地服务商DNS污染，解决方案是加入如下DNS解析到你的hosts文件中：
+
+```
+199.232.96.133 raw.githubusercontent.com
+199.232.96.133 camo.githubusercontent.com
+```
+
+如果你发现访问github很慢，那是因为本地服务商在进行DNS网络过滤，加入如下host跳过服务商网络过滤：
+
+```
+140.82.112.3 github.com
+```
+
 ## 预览
 
 ![picpic_example](https://matrixage.github.io/img/projects/picpic/picpic_example.jpg)
