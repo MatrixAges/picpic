@@ -2,7 +2,7 @@ name: Deploy gh-pages
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   build-and-deploy:
     runs-on: ubuntu-20.04

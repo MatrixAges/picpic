@@ -9,9 +9,6 @@ next-env.d.ts
 # testing
 /coverage
 
-# next.js
-/out/
-
 # production
 /dist
 

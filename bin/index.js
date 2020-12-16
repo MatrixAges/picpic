@@ -17,6 +17,7 @@ const main = () => {
 			fs.writeFileSync('./package.json', JSON.stringify(pkg, null, 2).concat('\n'))
 			if (!fs.existsSync(`${root}/assets`)) fs.mkdirSync(`${root}/assets`)
 			if (!fs.existsSync(`${root}/.github`)) fs.mkdirSync(`${root}/.github`)
+			if (!fs.existsSync(`${root}/.gitignore`)) fs.writeFileSync(`${root}/.gitignore`,`/dist \n/node_modules \n.DS_Store`)
 			fs.copySync(getPath('../.github'), `${root}/.github`)
 
 			console.log('---------- picpic init success! ---------- \n')
