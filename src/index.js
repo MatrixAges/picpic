@@ -202,14 +202,16 @@ document.addEventListener('included', function (){
 						clipboardCopy(
 							'https://' +
 								location.host +
-								'/images/' +
+								location.pathname +
 								this.current_data[index].path
 						)
 						break
 					case 'path':
 						showMsg()
 
-						clipboardCopy('https://' + location.host + '/images/' + path)
+						clipboardCopy(
+							'https://' + location.host + location.pathname + path
+						)
 
 						break
 					default:
