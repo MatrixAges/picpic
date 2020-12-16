@@ -1,6 +1,6 @@
 {
       "name": "@matrixage/picpic",
-      "version": "1.1.8",
+      "version": "1.2.3",
       "description": "A awesome image bed by github pages.",
       "keywords": [
             "picpic",
@@ -19,8 +19,7 @@
             "pages"
       ],
       "scripts": {
-            "init": "picpic init",
-            "build": "picpic build"
+            "build": "node ./build/index.js"
       },
       "repository": {
             "type": "git",

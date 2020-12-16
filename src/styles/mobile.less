@@ -1,37 +1,3 @@
-@media screen and (max-width:1400px) {
-      .folder_select_wrap {
-            @width: 36vw;
-
-            .folder_select {
-                  width: @width;
-
-                  .content_wrap {
-                        .content {
-                              .content_item {
-                                    width: calc((@width - 24px) / 4);
-
-                                    .icon_folder {
-                                          height: calc((@width - 24px) / 4 - 30px);
-
-                                          .children {
-                                                bottom: 27px;
-                                          }
-
-                                          .size {
-                                                bottom: 12px;
-                                          }
-                                    }
-
-                                    .img_item {
-                                          height: calc((@width - 24px) / 4 - 27px);
-                                    }
-                              }
-                        }
-                  }
-            }
-      }
-}
-
 @media screen and (max-width:1200px) {
       .img_items {
             .img_item_wrap {
@@ -53,29 +19,6 @@
 
                   .img_item {
                         height: calc(100vw / 1.5);
-                  }
-            }
-      }
-
-      .folder_select_wrap {
-            .folder_select {
-                  .content_wrap {
-                        .content {
-                              .content_item {
-
-                                    .icon_folder {
-                                          font-size: 10px;
-
-                                          .children {
-                                                bottom: 22px;
-                                          }
-
-                                          .size {
-                                                bottom: 9px;
-                                          }
-                                    }
-                              }
-                        }
                   }
             }
       }
@@ -111,39 +54,6 @@
                         .search {
                               .input {
                                     width: 24vw;
-                              }
-                        }
-                  }
-            }
-      }
-
-      .folder_select_wrap {
-            @width: 45vw;
-
-            .folder_select {
-                  width: @width;
-
-                  .content_wrap {
-                        .content {
-                              .content_item {
-                                    width: calc((@width - 24px) / 4);
-
-                                    .icon_folder {
-                                          height: calc((@width - 24px) / 4 - 30px);
-                                          font-size: 8px;
-
-                                          .children {
-                                                display: none;
-                                          }
-
-                                          .size {
-                                                bottom: 9px;
-                                          }
-                                    }
-
-                                    .img_item {
-                                          height: calc((@width - 24px) / 4 - 27px);
-                                    }
                               }
                         }
                   }
@@ -292,7 +202,11 @@
                                     .icon_folder {
                                           height: calc((@width - 24px) / 4 - 30px);
 
-                                          .size{
+                                          .children {
+                                                display: none;
+                                          }
+
+                                          .size {
                                                 display: none;
                                           }
                                     }
@@ -300,23 +214,9 @@
                                     .img_item {
                                           height: calc((@width - 24px) / 4 - 27px);
                                     }
-                              }
-                        }
-                  }
-            }
-      }
-}
 
-@media screen and (max-width:415px) {
-      .folder_select_wrap {
-            .folder_select {
-                  .content_wrap {
-                        .content {
-                              .content_item {
-                                    .icon_folder {
-                                          .size {
-                                                display: inline-block;
-                                          }
+                                    .name {
+                                          font-size: 10px;
                                     }
                               }
                         }
@@ -326,6 +226,16 @@
 }
 
 @media screen and (max-width:376px) {
+      .header_wrap {
+            .header {
+                  .left_wrap {
+                        .name {
+                              display: none;
+                        }
+                  }
+            }
+      }
+
       .img_items {
             &.list {
                   .img_item_wrap {
@@ -354,6 +264,8 @@
 
 @media screen and (max-width:321px) {
       .img_items {
+            padding-bottom: 15vh;
+
             &.list {
                   .img_item_wrap {
                         .img_item {
@@ -362,7 +274,6 @@
                   }
             }
       }
-
 
       .pagination_wrap {
             .pagination {

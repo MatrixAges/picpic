@@ -3,11 +3,13 @@ const paths = require('../utils/paths')
 
 module.exports = async str => {
 	const paths_source = await globby([ `${paths.getPath('../../src/components/**/*.html')}` ])
-	const paths_target = []
+      const paths_target = []
 
-	paths_source.map(item => paths_target.push(item.replace('src', '.')))
+	paths_source.map(item =>
+		paths_target.push(item.replace('src', '.').split('/').slice(-4).join('/'))
+      )
 
-	const items = paths_target.map(item => '<include src="' + item + '"></include>' + '\n')
+      const items = paths_target.map(item => '<include src="' + item + '"></include>' + '\n')
 
 	return str.replace(
 		`

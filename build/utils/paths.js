@@ -5,5 +5,5 @@ module.exports = {
 	root: root,
 	dist: `${root}/dist`,
 	assets: `${root}/assets`,
-	getPath: p => path.join(__dirname,'../', p)
+	getPath: p => path.join(__dirname, p)
 }
