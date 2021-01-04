@@ -2,7 +2,7 @@
 
 # <p align="center"> picpic </p>
 
-_<p align="center">A awesome image bed by github pages and github actions.</p>_
+_<p align="center">An awesome image host service driven by github pages and github actions.</p>_
 
 <p align="center">
   <a href="#"><img src="https://img.shields.io/badge/join-welcome-brightgreen.svg" alt="attitude_img"></a>
