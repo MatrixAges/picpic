@@ -36,30 +36,20 @@ To use picpic, by below steps:
 - drop you images to `assets` folder
 - `git commit` & `git push` to you github
 
-then active your gh-pages:
-
-![gh-pages](https://matrixage.github.io/img/projects/picpic/choose_gh_pages.jpg)
+then active your gh-pages.
 
 if your acccout do not active github actions, you should active github actions and git push again to trigger delopy process.
 
 if your github repo first branch is master,please change the branch in .github/workflows/ci.yml (main => master)
 
-## Preview
+## Features
 
-![picpic_example](https://matrixage.github.io/img/projects/picpic/picpic_example.jpg)
-
-## Tricks
-
-click image to preview detail:
-![preview_detail](https://matrixage.github.io/img/projects/picpic/preview_detail.jpg)
-
-click top-right icon folder to preview images in mode[folder]:
-![picpic_ex_folder](https://matrixage.github.io/img/projects/picpic/picpic_ex_folder.jpg)
-
-mobile is avaible when you visit site use mobile:
-![preview_mobile](https://matrixage.github.io/img/projects/picpic/preview_mobile.jpg)
+- click image to preview detail
+- preview images in folder mode
+- mobile is avaible
 
 also, more you can explore:
+
 - list mode
 - search
 - navigator
