@@ -38,9 +38,7 @@ $ npm i @matrixage/picpic
 
 github actions 检测到项目中 .github 文件夹下的部署脚本之后，将会启动自动化构建把你的图片打包编译到 gh-pages 分支上去。
 
-然后激活你的 gh-pages，在 github 项目的页面中的 tab 的最后一项 settings 中找到：
-
-![gh-pages](https://matrixage.github.io/img/projects/picpic/choose_gh_pages.jpg)
+然后激活你的 gh-pages，在 github 项目的页面中的 tab 的最后一项 settings 中找到.
 
 如果你没有使用过 github actions ，你需要激活你的 github actions 功能，然后才能通过部署脚本触发自动构建流程.
 
@@ -59,20 +57,11 @@ github actions 检测到项目中 .github 文件夹下的部署脚本之后，�
 
 如果你的仓库的主分支是master而不是main，请自行修改构建脚本依赖分支为master，在.github/workflows/ci.yml中。
 
-## 预览
-
-![picpic_example](https://matrixage.github.io/img/projects/picpic/picpic_example.jpg)
-
 ## Tricks
 
-点击图片可以查看更多细节:
-![preview_detail](https://matrixage.github.io/img/projects/picpic/preview_detail.jpg)
-
-点击右上角的文件夹图标可以进入文件夹模式:
-![picpic_ex_folder](https://matrixage.github.io/img/projects/picpic/picpic_ex_folder.jpg)
-
-在移动端同样是可以使用的:
-![preview_mobile](https://matrixage.github.io/img/projects/picpic/preview_mobile.jpg)
+- 点击图片可以查看更多细节
+- 点击右上角的文件夹图标可以进入文件夹模式
+- 在移动端同样是可以使用的
 
 更多功能请自行探索:
 
