@@ -1,5 +1,5 @@
 name: Deploy gh-pages 
-on:
+on: 
   push:
     branches:
       - main
