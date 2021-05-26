@@ -4,7 +4,12 @@
             "png",
             "jpg",
             "jpeg",
-            "gif"
+            "gif",
+            "webp"
       ],
-      "useFolder": false
+      "compress": {
+            "quality": 0.8,
+            "webp": true
+      },
+      "depth": 12
 }

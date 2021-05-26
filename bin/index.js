@@ -19,6 +19,7 @@ const main = () => {
 			if (!fs.existsSync(`${root}/.github`)) fs.mkdirSync(`${root}/.github`)
 			if (!fs.existsSync(`${root}/.gitignore`)) fs.writeFileSync(`${root}/.gitignore`,`/dist \n/node_modules \n.DS_Store`)
 			fs.copySync(getPath('../.github'), `${root}/.github`)
+			fs.copySync(getPath('../picpic.config.json'), `${root}/picpic.config.json`)
 
 			console.log('---------- picpic init success! ---------- \n')
 			break

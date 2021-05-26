@@ -57,10 +57,26 @@ also, more you can explore:
 
 if you have more demands, and if you think your demands reasonal, you can talk to me.
 
-## Dev route
+## Config
 
-- support picpic.config.json
-- support imagemin
+```json
+{
+	// supported images type
+	"types": ["svg", "png", "jpg", "jpeg", "gif", "webp"],
+
+	// enable imagemin，compress : false, disable imagemin，compress
+	// support compress jpg、png and gif
+	"compress": {
+		// image quality 0.1 - 1
+		"quality": 0.8,
+		// if true, webp，jpg、png will be compress by imagemin-webp
+		"webp": false
+	},
+
+	// file folder load depth
+	"depth": 12
+}
+```
 
 ## Accessibility
 

@@ -4,7 +4,7 @@ document.addEventListener('included', function (){
 		data: {
 			img_paths: window.img_paths,
 			current: -1,
-			style: 'contain',
+			style: 'cover',
 			page: 1,
 			page_size: 10,
 			array_page_size: [ 10, 20, 40, 80, 99999999 ],
