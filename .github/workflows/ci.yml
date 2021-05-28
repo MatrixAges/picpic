@@ -2,13 +2,21 @@ name: Deploy gh-pages
 on:
   push:
     branches:
-      - main
+      - master
 jobs:
   build-and-deploy:
     runs-on: ubuntu-20.04
     steps:
+    - uses: actions/cache@v2
+  with:
     - name: Checkout
       uses: actions/checkout@master
+
+    - name: Get npm cache
+      path: ~/.npm
+      key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+      restore-keys: |
+        ${{ runner.os }}-node-
 
     - name: Build
       run: npm install && npm run build
